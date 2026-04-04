@@ -1,9 +1,9 @@
 /* Desire Bank Swipe Demo */
 (function () {
   var i18n = {
-    en: { title: 'Desire Bank', like: 'LIKE', nope: 'NOPE', counter: '{n} of {t} wishes', st: 'Wishes explored!', sm: 'You swiped through the desires.' },
-    ru: { title: '\u0411\u0430\u043d\u043a \u0436\u0435\u043b\u0430\u043d\u0438\u0439', like: '\u0414\u0410', nope: '\u041d\u0415\u0422', counter: '{n} \u0438\u0437 {t}', st: '\u0416\u0435\u043b\u0430\u043d\u0438\u044f \u0438\u0437\u0443\u0447\u0435\u043d\u044b!', sm: '\u0412\u044b \u043f\u0440\u043e\u043b\u0438\u0441\u0442\u0430\u043b\u0438 \u0436\u0435\u043b\u0430\u043d\u0438\u044f.' },
-    ro: { title: 'Banca de dorinte', like: 'DA', nope: 'NU', counter: '{n} din {t}', st: 'Dorinte explorate!', sm: 'Ati explorat dorintele.' }
+    en: { title: 'Desire Bank', like: 'LIKE', nope: 'NOPE', counter: '{n} of {t} wishes', st: 'Wishes explored!', sm: 'You swiped through the desires.', hint: 'Swipe left or right' },
+    ru: { title: '\u0411\u0430\u043d\u043a \u0436\u0435\u043b\u0430\u043d\u0438\u0439', like: '\u0414\u0410', nope: '\u041d\u0415\u0422', counter: '{n} \u0438\u0437 {t}', st: '\u0416\u0435\u043b\u0430\u043d\u0438\u044f \u0438\u0437\u0443\u0447\u0435\u043d\u044b!', sm: '\u0412\u044b \u043f\u0440\u043e\u043b\u0438\u0441\u0442\u0430\u043b\u0438 \u0436\u0435\u043b\u0430\u043d\u0438\u044f.', hint: '\u0421\u0432\u0430\u0439\u043f\u043d\u0438\u0442\u0435 \u0432\u043b\u0435\u0432\u043e \u0438\u043b\u0438 \u0432\u043f\u0440\u0430\u0432\u043e' },
+    ro: { title: 'Banca de dorinte', like: 'DA', nope: 'NU', counter: '{n} din {t}', st: 'Dorinte explorate!', sm: 'Ati explorat dorintele.', hint: 'Glisati stanga sau dreapta' }
   };
   var wishes = [
     { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.png' },
@@ -27,6 +27,7 @@
     ov.innerHTML = '<div class="demo-phone"><button class="demo-close">&times;</button><div class="demo-screen"><div class="demo-content">' +
       '<div class="demo-header">' + t.title + '</div>' +
       '<div class="demo-swipe-stack" id="d-stack"></div>' +
+      '<div class="demo-swipe-hint" id="d-hint"><span class="demo-swipe-arrow">\u2190</span> ' + t.hint + ' <span class="demo-swipe-arrow">\u2192</span></div>' +
       '<div class="demo-swipe-counter" id="d-cnt">' + t.counter.replace('{n}', '1').replace('{t}', wishes.length) + '</div>' +
       '</div></div></div>';
     document.body.appendChild(ov);
@@ -88,6 +89,8 @@
           card.style.transform = 'translateX(' + (dir * 500) + 'px) rotate(' + (dir * 30) + 'deg)';
           card.style.opacity = '0';
           cur++;
+          var hintEl = ov.querySelector('#d-hint');
+          if (hintEl) hintEl.style.display = 'none';
           setTimeout(renderCard, 300);
         } else {
           card.style.transition = 'transform 0.3s ease';

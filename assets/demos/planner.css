@@ -1,29 +1,118 @@
-/* Activity Planner Demo */
-.demo-cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.demo-cal-title { font-size: 15px; font-weight: 700; color: #0f172a; font-family: "Plus Jakarta Sans", sans-serif; }
-.demo-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 16px; }
-.demo-cal-day-label { font-size: 10px; color: #7b8fa6; text-align: center; font-weight: 600; padding: 4px 0; }
-.demo-cal-day {
-  aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  border-radius: 12px; font-size: 13px; font-weight: 500; color: #44566f; cursor: pointer;
-  transition: all 0.2s; position: relative;
+/* Activity Planner Demo — matches app design */
+
+/* Month header */
+.demo-month-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 0 12px;
 }
-.demo-cal-day:hover { background: #eef6ff; }
-.demo-cal-day.today { font-weight: 700; color: #3a7bd5; }
-.demo-cal-day.selected { background: #3a7bd5; color: #fff; font-weight: 700; }
-.demo-cal-dot { width: 5px; height: 5px; border-radius: 50%; background: #3a7bd5; margin-top: 2px; }
-.demo-cal-day.selected .demo-cal-dot { background: #fff; }
-.demo-activity {
-  background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 12px;
-  border: 1px solid #e8f0fa; box-shadow: 0 2px 6px rgba(15,23,42,0.04);
+.demo-month-title { font-size: 15px; font-weight: 700; color: #0f172a; font-family: "Plus Jakarta Sans", sans-serif; }
+.demo-month-nav {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: #eef6ff; color: #3a7bd5; font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.demo-month-nav:hover { background: #d5e5f7; }
+
+/* Calendar grid */
+.demo-cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
+  margin-bottom: 16px;
+}
+.demo-cal-day-label {
+  font-size: 10px; color: #7b8fa6; text-align: center;
+  font-weight: 700; padding: 6px 0; text-transform: uppercase;
+}
+.demo-cal-cell {
+  display: flex; align-items: center; justify-content: center;
+  height: 42px; position: relative; cursor: pointer;
+  border-radius: 50%; transition: all 0.2s;
+}
+.demo-cal-num {
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 13px; font-weight: 500; color: #44566f;
+  position: relative; z-index: 2;
+  transition: all 0.2s;
+}
+.demo-cal-cell.other .demo-cal-num { color: #c4cdd8; }
+.demo-cal-cell.today .demo-cal-num {
+  background: #10B981; color: #fff; font-weight: 700;
+}
+.demo-cal-cell.selected .demo-cal-num {
+  background: #3a7bd5; color: #fff; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(58,123,213,0.3);
+}
+/* Activity ring indicator */
+.demo-cal-cell.has-act .demo-cal-num::before {
+  content: ''; position: absolute; inset: -3px;
+  border: 1.5px solid #3a7bd5; border-radius: 50%;
+  opacity: 0.35;
+}
+.demo-cal-cell.has-act .demo-cal-num::after {
+  content: ''; position: absolute; inset: -6px;
+  border: 1px solid #3a7bd5; border-radius: 50%;
+  opacity: 0.15;
+}
+.demo-cal-cell.selected.has-act .demo-cal-num::before,
+.demo-cal-cell.selected.has-act .demo-cal-num::after { border-color: rgba(255,255,255,0.4); }
+
+/* Activity card */
+.demo-act-card {
+  border-radius: 16px; padding: 16px; margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff, #f7fbff);
+  border: 1px solid #e8f0fa;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.04);
   animation: demoFadeIn 0.3s ease;
 }
-.demo-activity-title { font-size: 15px; font-weight: 700; color: #0f172a; font-family: "Plus Jakarta Sans", sans-serif; margin-bottom: 4px; }
-.demo-activity-time { font-size: 12px; color: #7b8fa6; margin-bottom: 12px; }
-.demo-activity-actions { display: flex; gap: 8px; }
-.demo-act-btn { flex: 1; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
+.demo-act-card.pending {
+  background: linear-gradient(135deg, #ffffff, #f2f7ff);
+  border-color: #d5e5f7;
+}
+.demo-act-emoji { font-size: 20px; margin-bottom: 8px; }
+.demo-act-title {
+  font-size: 15px; font-weight: 700; color: #0f172a;
+  font-family: "Plus Jakarta Sans", sans-serif; margin-bottom: 4px;
+}
+.demo-act-time { font-size: 12px; color: #7b8fa6; margin-bottom: 4px; }
+.demo-act-status {
+  display: inline-block; padding: 3px 10px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; margin-bottom: 12px;
+}
+.demo-act-status.pending-badge {
+  background: #FFF9F0; color: #92400E; border: 1px solid #FFD700;
+}
+.demo-act-status.accepted-badge {
+  background: #f0fdf4; color: #065F46; border: 1px solid #10B981;
+}
+.demo-act-moods {
+  display: flex; gap: 6px; margin-bottom: 12px;
+}
+.demo-act-mood-chip {
+  padding: 4px 10px; border-radius: 8px;
+  background: rgba(58,123,213,0.08); font-size: 12px; color: #44566f;
+}
+
+/* Action buttons */
+.demo-act-actions { display: flex; gap: 10px; }
+.demo-act-btn {
+  flex: 1; padding: 12px; border-radius: 12px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  border: none; min-height: 44px;
+  transition: all 0.15s;
+}
 .demo-act-btn:active { transform: scale(0.97); }
-.demo-act-btn.accept { background: linear-gradient(135deg, #4a8de0, #2a65b8); color: #fff; box-shadow: 0 2px 8px rgba(42,101,184,0.2); }
+.demo-act-btn.accept {
+  background: #3a7bd5; color: #fff;
+  box-shadow: 0 2px 8px rgba(58,123,213,0.25);
+}
 .demo-act-btn.decline { background: #f1f5f9; color: #44566f; }
-.demo-activity.accepted { border-color: #10B981; background: #f0fdf4; }
-.demo-activity.accepted .demo-activity-title { color: #065F46; }
+
+/* Accepted state */
+.demo-act-card.accepted { border-color: #10B981; }
+.demo-act-card.accepted .demo-act-status { background: #f0fdf4; color: #065F46; border-color: #10B981; }
+
+/* Empty state */
+.demo-act-empty {
+  text-align: center; color: #94a3b8; font-size: 13px;
+  padding: 24px 16px; font-style: italic;
+}

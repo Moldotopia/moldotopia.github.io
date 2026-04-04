@@ -27,6 +27,17 @@
 }
 .demo-swipe-badge.like { left: 16px; color: #4CAF50; border-color: #4CAF50; background: rgba(76,175,80,0.12); }
 .demo-swipe-badge.nope { right: 16px; color: #E53935; border-color: #E53935; background: rgba(229,57,53,0.12); transform: rotate(15deg); }
+.demo-swipe-hint {
+  text-align: center; font-size: 13px; color: #3a7bd5; font-weight: 600;
+  padding: 12px 0 8px; animation: demoHintPulse 2s ease-in-out infinite;
+}
+.demo-swipe-arrow {
+  display: inline-block; font-size: 16px; animation: demoHintSlide 1.5s ease-in-out infinite;
+}
+.demo-swipe-hint .demo-swipe-arrow:first-child { animation-name: demoHintSlideL; }
+@keyframes demoHintPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+@keyframes demoHintSlide { 0%,100%{transform:translateX(0)} 50%{transform:translateX(4px)} }
+@keyframes demoHintSlideL { 0%,100%{transform:translateX(0)} 50%{transform:translateX(-4px)} }
 .demo-swipe-counter {
   text-align: center; font-size: 13px; color: #7b8fa6; font-weight: 600;
 }
