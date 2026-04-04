@@ -130,12 +130,12 @@
   margin-bottom: 20px;
 }
 
-/* Slider */
+/* Slider — gradient matches app: blue → pink → peach */
 .demo-slider {
   position: relative;
   height: 10px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #C2D8F9, #d0d8f4, #b8c8ee);
+  background: linear-gradient(90deg, #C2D8F9 0%, #F4D9E7 50%, #FBE6C9 100%);
   margin-bottom: 12px;
   cursor: pointer;
   touch-action: none;
@@ -145,12 +145,12 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #fff;
-  border: 2.5px solid #3a7bd5;
-  box-shadow: 0 2px 6px rgba(58, 123, 213, 0.25);
+  border: 2px solid #E9A8D0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   cursor: grab;
   display: flex;
   align-items: center;
@@ -161,14 +161,14 @@
 
 .demo-slider-thumb:active {
   cursor: grabbing;
-  box-shadow: 0 4px 12px rgba(58, 123, 213, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .demo-slider-thumb-inner {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #3a7bd5;
+  background: #E9A8D0;
 }
 
 .demo-slider-labels {
