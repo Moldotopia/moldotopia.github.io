@@ -1,0 +1,13 @@
+/* Daily Intimacy Demo */
+.demo-habit { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-bottom: 8px; background: #fff; border: 1px solid #e8f0fa; }
+.demo-habit:active { transform: scale(0.98); }
+.demo-habit.done { background: linear-gradient(135deg, #4a8de0, #2a65b8); border-color: transparent; }
+.demo-habit-check { width: 24px; height: 24px; border-radius: 6px; border: 2px solid #d5e5f7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+.demo-habit.done .demo-habit-check { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.25); }
+.demo-habit-check svg { width: 14px; height: 14px; opacity: 0; transition: opacity 0.2s; }
+.demo-habit.done .demo-habit-check svg { opacity: 1; }
+.demo-habit-text { font-size: 14px; color: #0f172a; font-weight: 500; transition: color 0.2s; flex: 1; }
+.demo-habit.done .demo-habit-text { color: #fff; text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.4); }
+.demo-progress { height: 6px; border-radius: 3px; background: #e8f0fa; margin: 16px 0 8px; overflow: hidden; }
+.demo-progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #4a8de0, #2a65b8); transition: width 0.4s ease; }
+.demo-progress-label { font-size: 12px; color: #7b8fa6; text-align: center; font-weight: 600; }

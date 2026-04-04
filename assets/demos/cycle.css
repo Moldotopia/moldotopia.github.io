@@ -1,0 +1,21 @@
+/* Cycle Tracker Demo */
+.demo-section { margin-bottom: 12px; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e8f0fa; }
+.demo-section-header { display: flex; align-items: center; justify-content: space-between; padding: 16px; cursor: pointer; transition: background 0.2s; }
+.demo-section-header:hover { background: #f7fbff; }
+.demo-section-title { font-size: 15px; font-weight: 700; color: #0f172a; font-family: "Plus Jakarta Sans", sans-serif; }
+.demo-section-chevron { font-size: 18px; color: #3a7bd5; transition: transform 0.3s ease; }
+.demo-section.open .demo-section-chevron { transform: rotate(180deg); }
+.demo-section-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.demo-section.open .demo-section-body { max-height: 400px; }
+.demo-section-inner { padding: 0 16px 16px; }
+.demo-cycle-slider { position: relative; height: 8px; border-radius: 20px; background: #e8f0fa; margin: 16px 0 8px; cursor: pointer; touch-action: none; }
+.demo-cycle-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 20px; background: linear-gradient(90deg, #4a8de0, #3a7bd5); transition: width 0.1s; }
+.demo-cycle-thumb { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 20px; height: 20px; border-radius: 50%; background: #3a7bd5; box-shadow: 0 2px 6px rgba(42,101,184,0.3); cursor: grab; z-index: 2; }
+.demo-cycle-thumb:active { cursor: grabbing; }
+.demo-cycle-label { display: flex; justify-content: space-between; font-size: 11px; color: #7b8fa6; }
+.demo-chips-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.demo-symptom-chip { padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid #d5e5f7; background: #fff; color: #44566f; transition: all 0.15s; }
+.demo-symptom-chip.selected { background: #3a7bd5; color: #fff; border-color: #3a7bd5; }
+.demo-cycle-notes { width: 100%; border: 1px solid #e8f0fa; background: #f7fbff; border-radius: 10px; padding: 10px; font-size: 13px; font-family: inherit; color: #0f172a; resize: none; min-height: 50px; margin-top: 12px; outline: none; }
+.demo-cycle-notes:focus { border-color: #3a7bd5; }
+.demo-cycle-notes::placeholder { color: #94a3b8; }

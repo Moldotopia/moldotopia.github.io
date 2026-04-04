@@ -1,0 +1,20 @@
+/* Deep Connection Questions Demo */
+.demo-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.demo-chip { padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid rgba(15,23,42,0.08); background: #fff; color: #7b8fa6; transition: all 0.2s; }
+.demo-chip.active { color: #3a7bd5; border-color: #3a7bd5; background: #eef6ff; }
+.demo-question-card {
+  background: linear-gradient(135deg, rgba(238,246,255,0.9), rgba(247,251,255,0.95));
+  border-radius: 20px; padding: 28px 24px; min-height: 200px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; margin-bottom: 16px;
+  border: 1px solid rgba(58,123,213,0.08);
+  box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+  transition: opacity 0.3s;
+}
+.demo-question-emoji { font-size: 28px; margin-bottom: 12px; }
+.demo-question-text { font-size: 17px; font-weight: 600; color: #0f172a; line-height: 1.55; font-family: "Plus Jakarta Sans", sans-serif; }
+.demo-question-cat { font-size: 11px; color: #7b8fa6; margin-top: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.demo-q-nav { display: flex; gap: 8px; }
+.demo-q-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #d5e5f7; background: #fff; font-size: 13px; font-weight: 600; color: #44566f; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.demo-q-btn:active { transform: scale(0.97); }
+.demo-q-btn.primary { background: linear-gradient(135deg, #4a8de0, #2a65b8); color: #fff; border: none; box-shadow: 0 2px 8px rgba(42,101,184,0.2); }
