@@ -212,6 +212,8 @@
       scr.appendChild(suc);
       setTimeout(function () {
         suc.remove();
+        var content = scr.querySelector('.demo-content');
+        if (content) content.style.display = 'none';
         showInsights(scr, t, close);
       }, 1500);
     });
