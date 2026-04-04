@@ -507,22 +507,29 @@ main { flex: 1; }
    ============================================ */
 
 .how-it-works {
-  padding: 80px 32px 96px;
+  padding: 40px 32px 180px;
   background: var(--color-footer-bg);
   color: #fff;
   position: relative;
   overflow: hidden;
 }
 
-/* Bottom fade: dark → light */
+/* Bottom fade: dark → light, smooth ease */
 .how-it-works::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 120px;
-  background: linear-gradient(180deg, transparent 0%, var(--color-bg) 100%);
+  height: 140px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(247, 251, 255, 0.04) 20%,
+    rgba(247, 251, 255, 0.12) 40%,
+    rgba(247, 251, 255, 0.3) 60%,
+    rgba(247, 251, 255, 0.6) 80%,
+    var(--color-bg) 100%
+  );
   pointer-events: none;
   z-index: 1;
 }
@@ -781,9 +788,14 @@ main { flex: 1; }
   background:
     linear-gradient(180deg,
       var(--color-bg) 0%,
-      rgba(247, 251, 255, 0.3) 15%,
-      rgba(15, 23, 42, 0.15) 50%,
-      rgba(15, 23, 42, 0.6) 85%,
+      rgba(247, 251, 255, 0.7) 8%,
+      rgba(247, 251, 255, 0.35) 20%,
+      rgba(247, 251, 255, 0.12) 32%,
+      rgba(15, 23, 42, 0.05) 44%,
+      rgba(15, 23, 42, 0.15) 56%,
+      rgba(15, 23, 42, 0.32) 68%,
+      rgba(15, 23, 42, 0.52) 80%,
+      rgba(15, 23, 42, 0.72) 90%,
       var(--color-footer-bg) 100%
     );
   z-index: 1;
@@ -795,9 +807,13 @@ main { flex: 1; }
   background:
     linear-gradient(180deg,
       var(--color-bg) 0%,
-      rgba(247, 251, 255, 0.2) 18%,
-      rgba(15, 23, 42, 0.18) 50%,
-      rgba(247, 251, 255, 0.2) 82%,
+      rgba(247, 251, 255, 0.6) 10%,
+      rgba(247, 251, 255, 0.2) 25%,
+      rgba(15, 23, 42, 0.08) 40%,
+      rgba(15, 23, 42, 0.14) 50%,
+      rgba(15, 23, 42, 0.08) 60%,
+      rgba(247, 251, 255, 0.2) 75%,
+      rgba(247, 251, 255, 0.6) 90%,
       var(--color-bg) 100%
     );
 }
@@ -1038,36 +1054,76 @@ main { flex: 1; }
 }
 
 /* ============================================
-   CTA SECTION
+   CTA HERO — image background + glass card
    ============================================ */
 
-.cta-section {
-  padding: 80px 32px;
+.cta-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px 72px;
   text-align: center;
 }
 
-.cta-card {
-  max-width: 640px;
-  margin: 0 auto;
-  background: var(--gradient-hero);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: 56px 48px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
+.cta-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  z-index: 0;
 }
 
-.cta-card::before {
-  content: '';
+.cta-hero-overlay {
   position: absolute;
-  width: 350px;
-  height: 350px;
-  background: var(--gradient-glow-1);
-  border-radius: 50%;
-  top: -120px;
-  right: -100px;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg,
+      var(--color-bg) 0%,
+      rgba(247, 251, 255, 0.7) 6%,
+      rgba(247, 251, 255, 0.35) 14%,
+      rgba(247, 251, 255, 0.12) 24%,
+      rgba(15, 23, 42, 0.06) 34%,
+      rgba(15, 23, 42, 0.18) 46%,
+      rgba(15, 23, 42, 0.35) 58%,
+      rgba(15, 23, 42, 0.52) 70%,
+      rgba(15, 23, 42, 0.68) 82%,
+      rgba(15, 23, 42, 0.8) 100%
+    );
   pointer-events: none;
+}
+
+.cta-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cta-hero-tagline {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 28px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cta-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(28px) saturate(1.3);
+  -webkit-backdrop-filter: blur(28px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xl);
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .cta-card::after {
@@ -1081,17 +1137,18 @@ main { flex: 1; }
 }
 
 .cta-card h2 {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  color: var(--color-text);
   position: relative;
 }
 
 .cta-card p {
   color: var(--color-text-secondary);
-  margin-bottom: 32px;
-  font-size: 1rem;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
   position: relative;
 }
 
@@ -1331,7 +1388,7 @@ main { flex: 1; }
   .steps-grid { grid-template-columns: 1fr; gap: 28px; }
   .steps-grid::before { display: none; }
 
-  .how-it-works { padding: 56px 24px 80px; }
+  .how-it-works { padding: 32px 24px 150px; }
 
   .spotlight-inner { grid-template-columns: 1fr; gap: 40px; }
   .visual-break { height: 260px; }
@@ -1347,8 +1404,9 @@ main { flex: 1; }
   .policy-content { padding: 36px 24px 72px; }
   .policy-content h2 { font-size: 1.15rem; margin-top: 40px; }
 
-  .cta-card { padding: 44px 28px; }
-  .cta-card h2 { font-size: 1.45rem; }
+  .cta-hero { padding: 56px 20px 48px; }
+  .cta-card { padding: 32px 24px; }
+  .cta-card h2 { font-size: 1.3rem; }
 
   .footer-inner { flex-direction: column; text-align: center; }
 
@@ -1396,6 +1454,136 @@ main { flex: 1; }
 
   .features-header h2 { font-size: 1.4rem; }
   .section-header h2 { font-size: 1.4rem; }
+}
+
+/* ============================================
+   STARS — subtle dots on dark backgrounds
+   Uses multiple box-shadows on a tiny pseudo-element.
+   ============================================ */
+
+.starfield {
+  position: relative;
+}
+
+.starfield > .stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.starfield > .stars::before,
+.starfield > .stars::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Layer 1 — bright stars */
+.starfield > .stars::before {
+  box-shadow:
+    120px 22px 0 0.6px rgba(255,255,255,0.85),
+    340px 68px 0 0.5px rgba(220,235,255,0.75),
+    580px 18px 0 0.7px rgba(255,255,255,0.9),
+    800px 52px 0 0.5px rgba(220,235,255,0.7),
+    950px 95px 0 0.6px rgba(255,255,255,0.8),
+    1120px 40px 0 0.5px rgba(220,235,255,0.7),
+    70px 130px 0 0.5px rgba(255,255,255,0.7),
+    250px 155px 0 0.7px rgba(220,235,255,0.85),
+    440px 120px 0 0.5px rgba(255,255,255,0.75),
+    630px 148px 0 0.6px rgba(255,255,255,0.8),
+    820px 135px 0 0.5px rgba(220,235,255,0.7),
+    1050px 125px 0 0.6px rgba(255,255,255,0.75),
+    1200px 110px 0 0.5px rgba(220,235,255,0.65),
+    45px 230px 0 0.6px rgba(255,255,255,0.8),
+    190px 215px 0 0.5px rgba(220,235,255,0.7),
+    380px 245px 0 0.7px rgba(255,255,255,0.9),
+    560px 225px 0 0.5px rgba(255,255,255,0.75),
+    740px 260px 0 0.6px rgba(220,235,255,0.8),
+    920px 235px 0 0.5px rgba(255,255,255,0.7),
+    1100px 220px 0 0.6px rgba(220,235,255,0.75),
+    110px 320px 0 0.5px rgba(255,255,255,0.75),
+    310px 340px 0 0.6px rgba(220,235,255,0.8),
+    500px 310px 0 0.5px rgba(255,255,255,0.7),
+    690px 350px 0 0.7px rgba(255,255,255,0.85),
+    880px 325px 0 0.5px rgba(220,235,255,0.7),
+    1060px 310px 0 0.6px rgba(255,255,255,0.75),
+    1230px 345px 0 0.5px rgba(220,235,255,0.7),
+    55px 420px 0 0.6px rgba(255,255,255,0.8),
+    240px 440px 0 0.5px rgba(220,235,255,0.75),
+    430px 415px 0 0.6px rgba(255,255,255,0.7),
+    620px 445px 0 0.5px rgba(255,255,255,0.8),
+    800px 425px 0 0.7px rgba(220,235,255,0.85),
+    980px 410px 0 0.5px rgba(255,255,255,0.7),
+    1160px 440px 0 0.6px rgba(220,235,255,0.75),
+    160px 520px 0 0.5px rgba(255,255,255,0.75),
+    350px 540px 0 0.6px rgba(220,235,255,0.8),
+    540px 510px 0 0.5px rgba(255,255,255,0.7),
+    730px 535px 0 0.7px rgba(255,255,255,0.9),
+    910px 515px 0 0.5px rgba(220,235,255,0.7),
+    1090px 530px 0 0.6px rgba(255,255,255,0.8);
+  animation: twinkle1 8s ease-in-out infinite alternate;
+}
+
+/* Layer 2 — medium stars, offset */
+.starfield > .stars::after {
+  box-shadow:
+    200px 38px 0 0.4px rgba(255,255,255,0.5),
+    430px 85px 0 0.5px rgba(220,235,255,0.55),
+    660px 42px 0 0.4px rgba(255,255,255,0.45),
+    90px 105px 0 0.5px rgba(255,255,255,0.55),
+    310px 92px 0 0.4px rgba(220,235,255,0.5),
+    530px 115px 0 0.5px rgba(255,255,255,0.5),
+    750px 88px 0 0.4px rgba(220,235,255,0.45),
+    970px 108px 0 0.5px rgba(255,255,255,0.55),
+    1180px 75px 0 0.4px rgba(220,235,255,0.5),
+    140px 190px 0 0.4px rgba(255,255,255,0.5),
+    340px 175px 0 0.5px rgba(220,235,255,0.55),
+    530px 198px 0 0.4px rgba(255,255,255,0.45),
+    720px 182px 0 0.5px rgba(255,255,255,0.5),
+    900px 205px 0 0.4px rgba(220,235,255,0.5),
+    1080px 178px 0 0.5px rgba(255,255,255,0.45),
+    60px 280px 0 0.5px rgba(220,235,255,0.55),
+    260px 295px 0 0.4px rgba(255,255,255,0.5),
+    450px 275px 0 0.5px rgba(220,235,255,0.45),
+    640px 302px 0 0.4px rgba(255,255,255,0.5),
+    830px 285px 0 0.5px rgba(220,235,255,0.55),
+    1020px 270px 0 0.4px rgba(255,255,255,0.45),
+    1210px 298px 0 0.5px rgba(220,235,255,0.5),
+    175px 380px 0 0.4px rgba(255,255,255,0.5),
+    370px 395px 0 0.5px rgba(220,235,255,0.55),
+    560px 370px 0 0.4px rgba(255,255,255,0.45),
+    750px 398px 0 0.5px rgba(255,255,255,0.5),
+    940px 375px 0 0.4px rgba(220,235,255,0.5),
+    1130px 390px 0 0.5px rgba(255,255,255,0.55),
+    85px 475px 0 0.5px rgba(220,235,255,0.5),
+    280px 460px 0 0.4px rgba(255,255,255,0.45),
+    470px 485px 0 0.5px rgba(220,235,255,0.55),
+    660px 465px 0 0.4px rgba(255,255,255,0.5),
+    850px 490px 0 0.5px rgba(255,255,255,0.55),
+    1040px 470px 0 0.4px rgba(220,235,255,0.45),
+    210px 555px 0 0.5px rgba(255,255,255,0.5),
+    400px 535px 0 0.4px rgba(220,235,255,0.55),
+    590px 560px 0 0.5px rgba(255,255,255,0.5),
+    780px 545px 0 0.4px rgba(220,235,255,0.45),
+    960px 555px 0 0.5px rgba(255,255,255,0.55),
+    1150px 540px 0 0.4px rgba(220,235,255,0.5);
+  animation: twinkle2 11s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle1 {
+  0%   { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes twinkle2 {
+  0%   { opacity: 0.8; }
+  100% { opacity: 1; }
 }
 
 /* ============================================
