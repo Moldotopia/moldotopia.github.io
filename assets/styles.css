@@ -588,7 +588,7 @@ main { flex: 1; }
 .steps-grid::before {
   content: '';
   position: absolute;
-  top: 38px;
+  top: 28px;
   left: 16%;
   right: 16%;
   height: 2px;
@@ -606,8 +606,8 @@ main { flex: 1; }
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-footer-bg);
+  border: 2px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -617,6 +617,8 @@ main { flex: 1; }
   color: var(--color-primary);
   transition: all var(--transition-smooth);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
 }
 
 .step-card:hover .step-number {
