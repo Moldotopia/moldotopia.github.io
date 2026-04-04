@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://intimo.pro/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://intimo.pro/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://intimo.pro/ru/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://intimo.pro/ro/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://intimo.pro/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://intimo.pro/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://intimo.pro/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://intimo.pro/ro/privacy/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://intimo.pro/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://intimo.pro/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://intimo.pro/ru/terms/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://intimo.pro/ro/terms/"/>
+    <priority>0.8</priority>
+  </url>
+  <url><loc>https://intimo.pro/ru/</loc><priority>0.9</priority></url>
+  <url><loc>https://intimo.pro/ru/privacy/</loc><priority>0.7</priority></url>
+  <url><loc>https://intimo.pro/ru/terms/</loc><priority>0.7</priority></url>
+  <url><loc>https://intimo.pro/ro/</loc><priority>0.9</priority></url>
+  <url><loc>https://intimo.pro/ro/privacy/</loc><priority>0.7</priority></url>
+  <url><loc>https://intimo.pro/ro/terms/</loc><priority>0.7</priority></url>
+</urlset>
