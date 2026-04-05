@@ -1430,6 +1430,16 @@ main { flex: 1; }
   margin-bottom: 16px;
 }
 
+.pricing-card.popular .pricing-includes {
+  color: #5b9bd5;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 14px;
+  background: rgba(58, 123, 213, 0.08);
+  border-radius: 8px;
+  border-left: 3px solid #3a7bd5;
+}
+
 /* Feature list */
 .pricing-features {
   list-style: none;
