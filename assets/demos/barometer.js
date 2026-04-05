@@ -209,7 +209,7 @@
       suc.className = 'demo-success';
       suc.innerHTML = '<div class="demo-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>' +
         '<div class="demo-success-title">' + t.st + '</div><div class="demo-success-msg">' + t.sm + '</div>';
-      scr.appendChild(suc);
+      scr.innerHTML='';scr.scrollTop=0;scr.appendChild(suc);
       setTimeout(function () {
         suc.remove();
         scr.innerHTML = '';
