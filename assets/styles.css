@@ -863,16 +863,60 @@ main { flex: 1; }
   position: absolute;
   top: 12px;
   right: 12px;
-  padding: 3px 10px;
-  font-size: 10px;
+  padding: 5px 14px 5px 10px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: #fff;
   background: linear-gradient(135deg, #4a8de0, #2a65b8);
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(42, 101, 184, 0.3);
+  box-shadow:
+    0 3px 10px rgba(42, 101, 184, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Play triangle inside badge */
+.demo-badge::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 7px;
+  border-color: transparent transparent transparent #fff;
+  flex-shrink: 0;
+}
+
+/* Hover glow on card */
+.feature-card[data-demo]:hover .demo-badge {
+  transform: scale(1.08);
+  box-shadow:
+    0 4px 14px rgba(42, 101, 184, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Attention blink — 3 pulses then stops */
+.demo-badge {
+  animation: badgeBlink 0.6s ease-in-out 3;
+  animation-delay: 1.5s;
+  animation-fill-mode: both;
+}
+
+/* Re-trigger blink when card scrolls into view */
+.feature-card.visible .demo-badge {
+  animation: badgeBlink 0.6s ease-in-out 3;
+  animation-fill-mode: both;
+}
+
+@keyframes badgeBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.12); }
 }
 
 /* ============================================
