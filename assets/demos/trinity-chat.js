@@ -1,4 +1,4 @@
-/* Trinity Chat Widget — templated Q&A that sells the app */
+/* Trinity Chat Widget - templated Q&A that sells the app */
 (function () {
   var i18n = {
     en: {

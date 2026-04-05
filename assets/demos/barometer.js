@@ -1,4 +1,4 @@
-/* Barometer Demo — sliders + insights carousel */
+/* Barometer Demo - sliders + insights carousel */
 (function () {
   var i18n = {
     en: {

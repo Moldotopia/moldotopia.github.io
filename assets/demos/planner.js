@@ -1,4 +1,4 @@
-/* Activity Planner Demo — matches app calendar + activity cards */
+/* Activity Planner Demo - matches app calendar + activity cards */
 (function () {
   var i18n = {
     en: {

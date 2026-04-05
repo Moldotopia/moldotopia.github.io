@@ -1,4 +1,4 @@
-/* Cycle Tracker Demo — journal + partner insights carousel */
+/* Cycle Tracker Demo - journal + partner insights carousel */
 (function () {
   var i18n = {
     en: {
