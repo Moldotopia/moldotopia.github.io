@@ -266,6 +266,56 @@
       </div>
     </section>
 
+    <!-- Pricing -->
+    <section class="pricing starfield">
+      <div class="stars"></div>
+      <div class="pricing-inner">
+        <div class="section-header reveal">
+          <h2>Alegeti planul</h2>
+          <p>Gratuit pentru totdeauna. Faceti upgrade cand sunteti pregatiti.</p>
+        </div>
+        <div class="pricing-toggle reveal">
+          <span class="pricing-toggle-label active" data-period="monthly">Lunar</span>
+          <div class="pricing-toggle-switch" onclick="this.classList.toggle('yearly');var y=this.classList.contains('yearly');this.previousElementSibling.classList.toggle('active',!y);this.nextElementSibling.classList.toggle('active',y);document.querySelectorAll('[data-mo]').forEach(function(e){e.textContent=y?e.dataset.yr:e.dataset.mo});document.querySelectorAll('[data-yrnote]').forEach(function(e){e.textContent=y?e.dataset.yrnote:''})"></div>
+          <span class="pricing-toggle-label" data-period="yearly">Anual <span class="pricing-save">-33%</span></span>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card reveal reveal-delay-1">
+            <div class="pricing-plan-name">Intimo Plus</div>
+            <div class="pricing-price"><span class="pricing-price-amount" data-mo="$4.99" data-yr="$3.33">$4.99</span><span class="pricing-price-period">/luna</span></div>
+            <div class="pricing-price-yearly" data-yrnote="$39.99 pe an"></div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-includes">Informatii profunde, sugestii inteligente</div>
+            <ul class="pricing-features">
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Trinity AI personalizare</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Chat nelimitat cu Trinity</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Analiza avansata a dispozitiei</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Scorul sanatatii cuplului</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Predictii ale dispozitiei</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Idei locale pentru intalniri</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rapoarte PDF si export de date</li>
+            </ul>
+            <div class="pricing-cta soon">In curand</div>
+          </div>
+          <div class="pricing-card popular reveal reveal-delay-2">
+            <div class="pricing-popular-badge">Popular</div>
+            <div class="pricing-plan-name">Intimo Pro</div>
+            <div class="pricing-price"><span class="pricing-price-amount" data-mo="$19.99" data-yr="$13.33">$19.99</span><span class="pricing-price-period">/luna</span></div>
+            <div class="pricing-price-yearly" data-yrnote="$149.99 pe an"></div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-includes">Tot din Plus, si in plus:</div>
+            <ul class="pricing-features">
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI Concierge - cautare, planificare si rezervare</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Remindere inteligente pentru aniversari</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cronologia relatiei si realizari</li>
+            </ul>
+            <div class="pricing-cta soon">In curand</div>
+          </div>
+        </div>
+        <p class="pricing-free-note reveal"><strong>Gratuit pentru totdeauna:</strong> Conectare, planificare, dispozitie, dorinte, obiceiuri zilnice si ciclul sunt intotdeauna gratuite.</p>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-hero">
       <img class="cta-hero-bg" src="../assets/images/stargazing-night.png" alt="" aria-hidden="true" loading="lazy">

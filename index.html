@@ -269,6 +269,64 @@
       </div>
     </section>
 
+    <!-- Pricing -->
+    <section class="pricing starfield">
+      <div class="stars"></div>
+      <div class="pricing-inner">
+        <div class="section-header reveal">
+          <h2>Choose your plan</h2>
+          <p>Free forever. Upgrade when you're ready for more.</p>
+        </div>
+        <div class="pricing-toggle reveal">
+          <span class="pricing-toggle-label active" data-period="monthly">Monthly</span>
+          <div class="pricing-toggle-switch" onclick="this.classList.toggle('yearly');var y=this.classList.contains('yearly');this.previousElementSibling.classList.toggle('active',!y);this.nextElementSibling.classList.toggle('active',y);document.querySelectorAll('[data-mo]').forEach(function(e){e.textContent=y?e.dataset.yr:e.dataset.mo});document.querySelectorAll('[data-yrnote]').forEach(function(e){e.textContent=y?e.dataset.yrnote:''})"></div>
+          <span class="pricing-toggle-label" data-period="yearly">Yearly <span class="pricing-save">Save 33%</span></span>
+        </div>
+        <div class="pricing-grid">
+          <!-- Plus -->
+          <div class="pricing-card reveal reveal-delay-1">
+            <div class="pricing-plan-name">Intimo Plus</div>
+            <div class="pricing-price">
+              <span class="pricing-price-amount" data-mo="$4.99" data-yr="$3.33">$4.99</span>
+              <span class="pricing-price-period">/mo</span>
+            </div>
+            <div class="pricing-price-yearly" data-yrnote="Billed $39.99/year"></div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-includes">Deeper insights, smarter suggestions</div>
+            <ul class="pricing-features">
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Trinity AI-powered personalization</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited Trinity chat</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Advanced mood analytics</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Couple Health Score</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mood predictions</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local date ideas for your city</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>PDF reports & data export</li>
+            </ul>
+            <div class="pricing-cta soon">Coming Soon</div>
+          </div>
+          <!-- Pro -->
+          <div class="pricing-card popular reveal reveal-delay-2">
+            <div class="pricing-popular-badge">Popular</div>
+            <div class="pricing-plan-name">Intimo Pro</div>
+            <div class="pricing-price">
+              <span class="pricing-price-amount" data-mo="$19.99" data-yr="$13.33">$19.99</span>
+              <span class="pricing-price-period">/mo</span>
+            </div>
+            <div class="pricing-price-yearly" data-yrnote="Billed $149.99/year"></div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-includes">Everything in Plus, and:</div>
+            <ul class="pricing-features">
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI Concierge - find, plan & book dates</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Anniversary & Date Reminder Pro</li>
+              <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relationship Timeline & milestones</li>
+            </ul>
+            <div class="pricing-cta soon">Coming Soon</div>
+          </div>
+        </div>
+        <p class="pricing-free-note reveal"><strong>Free forever:</strong> Pairing, planning, mood tracking, desires, daily habits, and cycle tracking are always free.</p>
+      </div>
+    </section>
+
     <!-- CTA with stargazing background -->
     <section class="cta-hero">
       <img class="cta-hero-bg" src="assets/images/stargazing-night.png" alt="" aria-hidden="true" loading="lazy">

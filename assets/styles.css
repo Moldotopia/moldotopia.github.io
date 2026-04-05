@@ -1212,6 +1212,303 @@ main { flex: 1; }
 }
 
 /* ============================================
+   PRICING SECTION
+   ============================================ */
+
+.pricing {
+  padding: 80px 32px 100px;
+  background: var(--color-footer-bg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top fade light→dark */
+.pricing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(180deg,
+    var(--color-bg) 0%,
+    rgba(247,251,255,0.04) 40%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bottom fade dark→CTA */
+.pricing::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: linear-gradient(180deg, transparent 0%, rgba(15,23,42,0.5) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pricing-inner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pricing .section-header h2 { color: #fff; }
+.pricing .section-header p { color: var(--color-footer-text); }
+
+/* Toggle switch */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.pricing-toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-footer-text);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.pricing-toggle-label.active { color: #fff; font-weight: 600; }
+
+.pricing-toggle-switch {
+  width: 48px;
+  height: 26px;
+  border-radius: 13px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.pricing-toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform var(--transition-fast);
+}
+
+.pricing-toggle-switch.yearly::after {
+  transform: translateX(22px);
+}
+
+.pricing-toggle-switch.yearly {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.pricing-save {
+  font-size: 11px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16,185,129,0.12);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+/* Cards grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Card base */
+.pricing-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+/* Popular card highlight */
+.pricing-card.popular {
+  background: rgba(58,123,213,0.08);
+  border-color: rgba(58,123,213,0.3);
+  box-shadow: 0 0 40px rgba(58,123,213,0.08);
+}
+
+.pricing-card.popular::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-xl);
+  padding: 1px;
+  background: var(--gradient-button);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.pricing-popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--gradient-button);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(42,101,184,0.35);
+}
+
+.pricing-plan-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-footer-text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.pricing-price-amount {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.pricing-price-period {
+  font-size: 14px;
+  color: var(--color-footer-text);
+  font-weight: 500;
+}
+
+.pricing-price-yearly {
+  font-size: 13px;
+  color: var(--color-footer-text);
+  margin-bottom: 24px;
+  min-height: 20px;
+}
+
+.pricing-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+
+.pricing-includes {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-footer-text);
+  margin-bottom: 16px;
+}
+
+/* Feature list */
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+
+.pricing-features li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-check { color: #10B981; }
+.pricing-card.popular .pricing-check { color: #5b9bd5; }
+
+/* CTA button */
+.pricing-cta {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: default;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.pricing-cta.soon {
+  background: rgba(255,255,255,0.08);
+  color: var(--color-footer-text);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.pricing-card.popular .pricing-cta.soon {
+  background: rgba(58,123,213,0.15);
+  color: #5b9bd5;
+  border-color: rgba(58,123,213,0.25);
+}
+
+/* Free note */
+.pricing-free-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-footer-text);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.pricing-free-note strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing { padding: 56px 24px 80px; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pricing-card { padding: 28px 24px; }
+  .pricing-price-amount { font-size: 32px; }
+}
+
+/* ============================================
    CTA HERO — image background + glass card
    ============================================ */
 
