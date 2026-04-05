@@ -1500,6 +1500,31 @@ main { flex: 1; }
   font-weight: 600;
 }
 
+/* Feature descriptions inside list items */
+.pricing-features li small {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Price analogy */
+.pricing-analogy {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.pricing-analogy em {
+  color: rgba(255,255,255,0.75);
+  font-style: normal;
+  font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .pricing { padding: 56px 24px 80px; }
