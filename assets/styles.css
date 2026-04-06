@@ -1447,6 +1447,32 @@ main { flex: 1; }
   border-color: rgba(58,123,213,0.25);
 }
 
+.pricing-cta.notify {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pricing-cta.notify:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.pricing-card.popular .pricing-cta.notify {
+  background: var(--gradient-button);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(42,101,184,0.3);
+}
+
+.pricing-card.popular .pricing-cta.notify:hover {
+  box-shadow: 0 6px 24px rgba(42,101,184,0.4);
+}
+
 /* Free note */
 .pricing-free-note {
   text-align: center;
