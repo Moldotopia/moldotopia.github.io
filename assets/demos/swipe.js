@@ -6,11 +6,11 @@
     ro: { title: 'Banca de dorinte', like: 'DA', nope: 'NU', counter: '{n} din {t}', st: 'Dorinte explorate!', sm: 'Ati explorat dorintele.', hint: 'Glisati stanga sau dreapta' }
   };
   var wishes = [
-    { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.jpg' },
-    { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.jpg' },
-    { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.jpg' },
-    { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.jpg' },
-    { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.jpg' }
+    { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.png' },
+    { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.png' },
+    { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.png' },
+    { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.png' },
+    { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.png' }
   ];
 
   function getLang() { var p = window.location.pathname; return p.indexOf('/ru') === 0 ? 'ru' : p.indexOf('/ro') === 0 ? 'ro' : 'en'; }
