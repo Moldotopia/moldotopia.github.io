@@ -337,54 +337,6 @@ main { flex: 1; }
   object-position: center 15%;
 }
 
-.hero-glow {
-  display: none;
-}
-
-.hero-glow-1 {
-  width: 650px;
-  height: 650px;
-  background: var(--gradient-glow-1);
-  top: -18%;
-  right: -12%;
-  animation: floatOrb1 18s ease-in-out infinite;
-}
-
-.hero-glow-2 {
-  width: 520px;
-  height: 520px;
-  background: var(--gradient-glow-2);
-  bottom: -22%;
-  left: -10%;
-  animation: floatOrb2 22s ease-in-out infinite;
-}
-
-.hero-glow-3 {
-  width: 380px;
-  height: 380px;
-  background: var(--gradient-glow-3);
-  top: 28%;
-  left: 52%;
-  animation: floatOrb3 15s ease-in-out infinite;
-}
-
-@keyframes floatOrb1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-30px, 20px) scale(1.05); }
-  66% { transform: translate(15px, -25px) scale(0.97); }
-}
-
-@keyframes floatOrb2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(25px, -15px) scale(1.03); }
-  66% { transform: translate(-20px, 30px) scale(0.96); }
-}
-
-@keyframes floatOrb3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-35px, -20px) scale(1.08); }
-}
-
 /* Connection rings */
 .connection-symbol {
   display: flex;

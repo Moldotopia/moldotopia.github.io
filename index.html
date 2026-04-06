@@ -28,6 +28,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="manifest" href="/manifest.json">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"INTIMO","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Couples connection and intimacy planning app with end-to-end encryption, partner pairing, and relationship insights.","url":"https://intimo.pro","author":{"@type":"Person","name":"Vladimir Ternavschi"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
 </head>
 <body>
   <a href="#main" class="skip-nav">Skip to content</a>
@@ -43,6 +47,7 @@
       </button>
       <ul class="nav-links">
         <li><a href="/" class="active">Home</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="/terms">Terms</a></li>
         <li><span class="lang-switch"><a href="/" class="active">EN</a><a href="/ru/">RU</a><a href="/ro/">RO</a></span></li>
@@ -56,11 +61,8 @@
     <section class="hero starfield">
       <div class="stars"></div>
       <div class="hero-bg-image">
-        <img src="assets/images/hero-couple.png" alt="" aria-hidden="true" loading="eager">
+        <img src="assets/images/hero-couple.jpg" alt="" aria-hidden="true" loading="eager">
       </div>
-      <div class="hero-glow hero-glow-1"></div>
-      <div class="hero-glow hero-glow-2"></div>
-      <div class="hero-glow hero-glow-3"></div>
       <div class="hero-inner">
         <div class="connection-symbol">
           <span class="ring ring-1"></span>
@@ -70,8 +72,8 @@
         <h1>Build stronger <span class="em">connection</span> through small daily moments</h1>
         <p>INTIMO is a couples app that helps you and your partner stay close through shared planning, desire matching, mood awareness, and intelligent suggestions - all end-to-end encrypted and private by design.</p>
         <div class="hero-actions">
-          <a href="/privacy" class="btn btn-primary">Privacy Policy</a>
-          <a href="/terms" class="btn btn-outline">Terms of Use</a>
+          <a href="#pricing" class="btn btn-primary">Get Early Access</a>
+          <a href="#features" class="btn btn-outline">Explore Features</a>
         </div>
       </div>
     </section>
@@ -127,7 +129,7 @@
     </section>
 
     <!-- Core features -->
-    <section class="features">
+    <section id="features" class="features">
       <div class="features-inner">
         <div class="features-header reveal">
           <h2>Everything you need to stay close</h2>
@@ -188,7 +190,7 @@
 
     <!-- Visual break -->
     <div class="visual-break">
-      <img src="assets/images/sunset-moment.png" alt="Couple watching sunset together" loading="lazy">
+      <img src="assets/images/sunset-moment.jpg" alt="Couple watching sunset together" loading="lazy">
       <div class="visual-break-text">
         <p>Relationships are built from small daily steps</p>
         <span>The INTIMO philosophy</span>
@@ -270,7 +272,7 @@
     </section>
 
     <!-- Pricing -->
-    <section class="pricing starfield">
+    <section id="pricing" class="pricing starfield">
       <div class="stars"></div>
       <div class="pricing-inner">
         <div class="section-header reveal">
@@ -330,7 +332,7 @@
 
     <!-- CTA with stargazing background -->
     <section class="cta-hero">
-      <img class="cta-hero-bg" src="assets/images/stargazing-night.png" alt="" aria-hidden="true" loading="lazy">
+      <img class="cta-hero-bg" src="assets/images/stargazing-night.jpg" alt="" aria-hidden="true" loading="lazy">
       <div class="cta-hero-overlay"></div>
       <div class="cta-hero-inner">
         <p class="cta-hero-tagline">Your private space, under the same sky</p>
@@ -352,6 +354,8 @@
         &copy; 2026 Vladimir Ternavschi. All rights reserved.
       </div>
       <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="/terms">Terms</a></li>
         <li><a href="mailto:intsync0@gmail.com">Contact</a></li>

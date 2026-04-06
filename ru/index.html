@@ -28,6 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
   <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
   <a href="#main" class="skip-nav">Перейти к содержимому</a>
@@ -43,6 +44,9 @@
       </button>
       <ul class="nav-links">
         <li><a href="/ru/" class="active">Главная</a></li>
+        <li><a href="#pricing">Тарифы</a></li>
+        <li><a href="#features">Функции</a></li>
+        <li><a href="#pricing">Тарифы</a></li>
         <li><a href="/ru/privacy/">Конфиденциальность</a></li>
         <li><a href="/ru/terms/">Условия</a></li>
         <li><span class="lang-switch"><a href="/">EN</a><a href="/ru/" class="active">RU</a><a href="/ro/">RO</a></span></li>
@@ -56,7 +60,7 @@
     <section class="hero starfield">
       <div class="stars"></div>
       <div class="hero-bg-image">
-        <img src="../assets/images/hero-couple.png" alt="" aria-hidden="true" loading="eager">
+        <img src="../assets/images/hero-couple.jpg" alt="" aria-hidden="true" loading="eager">
       </div>
       <div class="hero-inner">
         <div class="connection-symbol">
@@ -67,8 +71,8 @@
         <h1>Укрепляйте <span class="em">связь</span> через маленькие ежедневные шаги</h1>
         <p>INTIMO - приложение для пар, которое помогает оставаться на связи через совместное планирование, совпадение желаний, осознанность настроения и умные подсказки. Всё зашифровано и приватно.</p>
         <div class="hero-actions">
-          <a href="/ru/privacy/" class="btn btn-primary">Политика конфиденциальности</a>
-          <a href="/ru/terms/" class="btn btn-outline">Пользовательское соглашение</a>
+          <a href="#pricing" class="btn btn-primary">Ранний доступ</a>
+          <a href="#features" class="btn btn-outline">Возможности</a>
         </div>
       </div>
     </section>
@@ -124,7 +128,7 @@
     </section>
 
     <!-- Core features -->
-    <section class="features">
+    <section id="features" class="features">
       <div class="features-inner">
         <div class="features-header reveal">
           <h2>Всё, что нужно, чтобы быть ближе</h2>
@@ -185,7 +189,7 @@
 
     <!-- Visual break -->
     <div class="visual-break">
-      <img src="../assets/images/sunset-moment.png" alt="Пара, наблюдающая закат" loading="lazy">
+      <img src="../assets/images/sunset-moment.jpg" alt="Пара, наблюдающая закат" loading="lazy">
       <div class="visual-break-text">
         <p>Отношения строятся из маленьких ежедневных шагов</p>
         <span>Философия INTIMO</span>
@@ -267,7 +271,7 @@
     </section>
 
     <!-- Pricing -->
-    <section class="pricing starfield">
+    <section id="pricing" class="pricing starfield">
       <div class="stars"></div>
       <div class="pricing-inner">
         <div class="section-header reveal">
@@ -319,7 +323,7 @@
 
     <!-- CTA -->
     <section class="cta-hero">
-      <img class="cta-hero-bg" src="../assets/images/stargazing-night.png" alt="" aria-hidden="true" loading="lazy">
+      <img class="cta-hero-bg" src="../assets/images/stargazing-night.jpg" alt="" aria-hidden="true" loading="lazy">
       <div class="cta-hero-overlay"></div>
       <div class="cta-hero-inner">
         <p class="cta-hero-tagline">Ваше личное пространство, под одним небом</p>
@@ -341,6 +345,7 @@
         &copy; 2026 Vladimir Ternavschi. Все права защищены.
       </div>
       <ul class="footer-links">
+        <li><a href="#pricing">Тарифы</a></li>
         <li><a href="/ru/privacy/">Конфиденциальность</a></li>
         <li><a href="/ru/terms/">Условия</a></li>
         <li><a href="mailto:intsync0@gmail.com">Контакт</a></li>
