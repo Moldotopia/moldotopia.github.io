@@ -2078,3 +2078,300 @@ body::before {
   background-repeat: repeat;
   background-size: 256px 256px;
 }
+
+/* ============================================
+   BETA SIGNUP SECTION
+   ============================================ */
+
+.beta-banner {
+  position: relative;
+  padding: 48px 24px;
+  background: linear-gradient(135deg, #1a2744 0%, #1e3a5f 50%, #2a4a6b 100%);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.beta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(58, 123, 213, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(91, 155, 213, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.beta-inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.beta-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(58, 123, 213, 0.3);
+  border: 1px solid rgba(58, 123, 213, 0.4);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7eb8ff;
+  margin-bottom: 16px;
+}
+
+.beta-banner h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.beta-banner p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.btn-beta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #4a8de0, #2a65b8);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(42, 101, 184, 0.4);
+  position: relative;
+}
+
+.btn-beta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(42, 101, 184, 0.5);
+  background: linear-gradient(135deg, #5a9bef, #3a75c8);
+}
+
+.btn-beta svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   BETA MODAL
+   ============================================ */
+
+.beta-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.beta-overlay.open {
+  display: flex;
+}
+
+.beta-modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  max-width: 480px;
+  width: 100%;
+  padding: 40px 36px;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: betaModalIn 0.3s ease;
+}
+
+@keyframes betaModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.beta-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--color-primary-light);
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+  color: var(--color-text-secondary);
+}
+
+.beta-modal-close:hover {
+  background: var(--color-border);
+}
+
+.beta-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.beta-modal .beta-modal-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+}
+
+.beta-field {
+  margin-bottom: 18px;
+}
+
+.beta-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.beta-field input[type="text"],
+.beta-field input[type="email"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.beta-field input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.beta-field input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.beta-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 24px 0;
+  cursor: pointer;
+}
+
+.beta-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.beta-checkbox span {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.btn-beta-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--gradient-button);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-beta-submit:hover:not(:disabled) {
+  background: var(--gradient-button-hover);
+  box-shadow: var(--shadow-button-hover);
+  transform: translateY(-2px);
+}
+
+.btn-beta-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.beta-error {
+  color: #d44060;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  display: none;
+}
+
+.beta-error.visible {
+  display: block;
+}
+
+.beta-success {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.beta-success svg {
+  width: 56px;
+  height: 56px;
+  color: #22c55e;
+  margin-bottom: 16px;
+}
+
+.beta-success h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.beta-success p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+  .beta-banner {
+    padding: 36px 20px;
+  }
+  .beta-banner h2 {
+    font-size: 1.4rem;
+  }
+  .beta-modal {
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+  }
+}
