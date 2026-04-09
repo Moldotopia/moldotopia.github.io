@@ -2085,53 +2085,55 @@ body::before {
 
 .beta-banner {
   position: relative;
-  padding: 72px 32px 64px;
+  padding: 72px 32px 48px;
   background: var(--color-footer-bg);
   color: #fff;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
+  margin-bottom: 0;
+  z-index: 2;
 }
 
-/* Decorative divider: glowing line with interlocking rings */
+/* Decorative divider: sits on the exact seam, no own background */
 .beta-divider {
   position: relative;
-  height: 48px;
-  background: var(--color-footer-bg);
+  z-index: 3;
+  height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
+/* Gradient line */
 .beta-divider::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
+  top: 0;
+  left: 8%;
+  right: 8%;
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(58, 123, 213, 0.15) 15%,
-    rgba(58, 123, 213, 0.35) 35%,
+    rgba(58, 123, 213, 0.12) 15%,
+    rgba(58, 123, 213, 0.3) 35%,
     rgba(91, 155, 213, 0.5) 50%,
-    rgba(58, 123, 213, 0.35) 65%,
-    rgba(58, 123, 213, 0.15) 85%,
+    rgba(58, 123, 213, 0.3) 65%,
+    rgba(58, 123, 213, 0.12) 85%,
     transparent 100%
   );
 }
 
-/* Glow behind the line */
+/* Soft glow behind line */
 .beta-divider::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 25%;
-  right: 25%;
+  top: -6px;
+  left: 20%;
+  right: 20%;
   height: 12px;
-  transform: translateY(-50%);
-  background: radial-gradient(ellipse at center, rgba(58, 123, 213, 0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(58, 123, 213, 0.1) 0%, transparent 70%);
   filter: blur(4px);
-  pointer-events: none;
 }
 
 .beta-divider-rings {
@@ -2139,15 +2141,14 @@ body::before {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
 .beta-divider-ring {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1.5px solid rgba(91, 155, 213, 0.45);
-  box-shadow: 0 0 8px rgba(58, 123, 213, 0.15);
+  border: 1.5px solid rgba(91, 155, 213, 0.4);
+  box-shadow: 0 0 8px rgba(58, 123, 213, 0.12);
   background: var(--color-footer-bg);
 }
 
@@ -2155,14 +2156,13 @@ body::before {
   margin-left: -6px;
 }
 
-/* Diamond accents flanking the rings */
 .beta-divider-diamond {
   width: 5px;
   height: 5px;
-  background: rgba(91, 155, 213, 0.4);
+  background: rgba(91, 155, 213, 0.35);
   transform: rotate(45deg);
   margin: 0 16px;
-  box-shadow: 0 0 6px rgba(58, 123, 213, 0.2);
+  box-shadow: 0 0 6px rgba(58, 123, 213, 0.15);
 }
 
 @media (max-width: 700px) {
