@@ -731,39 +731,16 @@ main { flex: 1; }
 }
 
 .feature-card {
-  background: linear-gradient(160deg, #ffffff 0%, #f8fbff 40%, #eef4fb 100%);
-  border: 1px solid rgba(200, 220, 245, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.95);
-  border-bottom: 3px solid rgba(42, 101, 184, 0.15);
+  border: 1.5px solid rgba(58, 123, 213, 0.15);
   border-radius: var(--radius-lg);
   padding: 36px 30px;
   position: relative;
   overflow: hidden;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 1),
-    0 2px 4px rgba(15, 23, 42, 0.04),
-    0 8px 20px rgba(58, 123, 213, 0.07),
-    0 20px 48px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
   transition:
     transform var(--transition-smooth),
     box-shadow var(--transition-smooth),
     border-color var(--transition-smooth);
-}
-
-/* Inner glass shine - top half */
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background: linear-gradient(180deg,
-    rgba(255, 255, 255, 0.75) 0%,
-    rgba(255, 255, 255, 0.3) 40%,
-    transparent 100%);
-  pointer-events: none;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 /* Gradient accent line on hover */
@@ -780,14 +757,9 @@ main { flex: 1; }
 }
 
 .feature-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(58, 123, 213, 0.35);
-  border-bottom-color: rgba(42, 101, 184, 0.3);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 1),
-    0 4px 8px rgba(15, 23, 42, 0.05),
-    0 16px 40px rgba(58, 123, 213, 0.12),
-    0 28px 64px rgba(15, 23, 42, 0.06);
+  transform: translateY(-6px);
+  border-color: rgba(58, 123, 213, 0.3);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1);
 }
 
 .feature-card:hover::after {
