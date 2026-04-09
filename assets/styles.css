@@ -1633,8 +1633,32 @@ main { flex: 1; }
    POLICY PAGES
    ============================================ */
 
+/* Breadcrumb navigation */
+.breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 32px 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-sep {
+  margin: 0 8px;
+  opacity: 0.4;
+}
+
 .policy-header {
-  padding: 72px 32px 48px;
+  padding: 48px 32px 48px;
   text-align: center;
   background: var(--gradient-hero);
   position: relative;
