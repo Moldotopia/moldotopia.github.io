@@ -554,32 +554,34 @@ main { flex: 1; }
    ============================================ */
 
 .how-it-works {
-  padding: 40px 32px 180px;
+  padding: 40px 32px 220px;
   background: var(--color-footer-bg);
   color: #fff;
   position: relative;
   overflow: hidden;
 }
 
-/* Bottom fade: dark → light, extra stops to reduce banding */
+/* Bottom fade: dark → light, tall zone to fully dissolve */
 .how-it-works::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 160px;
+  height: 220px;
   background: linear-gradient(180deg,
     transparent 0%,
-    rgba(247, 251, 255, 0.02) 10%,
-    rgba(247, 251, 255, 0.05) 20%,
-    rgba(247, 251, 255, 0.10) 30%,
-    rgba(247, 251, 255, 0.18) 40%,
-    rgba(247, 251, 255, 0.28) 50%,
-    rgba(247, 251, 255, 0.40) 60%,
-    rgba(247, 251, 255, 0.55) 70%,
-    rgba(247, 251, 255, 0.72) 80%,
-    rgba(247, 251, 255, 0.88) 90%,
+    rgba(247, 251, 255, 0.01) 8%,
+    rgba(247, 251, 255, 0.03) 16%,
+    rgba(247, 251, 255, 0.07) 24%,
+    rgba(247, 251, 255, 0.12) 32%,
+    rgba(247, 251, 255, 0.20) 40%,
+    rgba(247, 251, 255, 0.30) 48%,
+    rgba(247, 251, 255, 0.42) 56%,
+    rgba(247, 251, 255, 0.56) 64%,
+    rgba(247, 251, 255, 0.70) 72%,
+    rgba(247, 251, 255, 0.82) 80%,
+    rgba(247, 251, 255, 0.92) 88%,
     var(--color-bg) 100%
   );
   pointer-events: none;
