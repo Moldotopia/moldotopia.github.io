@@ -385,7 +385,7 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Date ideas near you</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly progress reports</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available." rel="noopener noreferrer">Notify me</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Notify me</button>
             <p class="pricing-analogy">Less than <em>a coffee a week</em></p>
           </div>
           <!-- Pro -->
@@ -404,13 +404,49 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Smart anniversary reminders + gift ideas</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Your relationship story as a timeline</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available." rel="noopener noreferrer">Notify me</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Notify me</button>
             <p class="pricing-analogy">Less than your <em>AI work subscription</em>. This one's for love.</p>
           </div>
         </div>
         <p class="pricing-free-note reveal"><strong>Free forever:</strong> Pairing, planning, mood tracking, desires, daily habits, and cycle tracking are always free.</p>
       </div>
     </section>
+
+    <!-- Early interest modal -->
+    <div class="beta-overlay" id="interestOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+      <div class="beta-modal">
+        <button class="beta-modal-close" onclick="document.getElementById('interestOverlay').classList.remove('open')" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div id="interestForm">
+          <h3>Get notified</h3>
+          <p class="beta-modal-sub">Be the first to know when premium plans launch.</p>
+          <input type="hidden" id="interestPlan" value="">
+          <div class="beta-field">
+            <label for="interestName">Your name</label>
+            <input type="text" id="interestName" autocomplete="name" placeholder="Alex" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestEmail">Your email</label>
+            <input type="email" id="interestEmail" autocomplete="email" placeholder="alex@example.com" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestComment">Anything you'd like to share? <span style="font-weight:400;color:var(--color-text-muted)">(optional)</span></label>
+            <textarea id="interestComment" placeholder="Your wishes, ideas, what you'd love to see in premium..."></textarea>
+          </div>
+          <div class="beta-error" id="interestError"></div>
+          <button class="btn-beta-submit" id="interestSubmit" onclick="submitInterest()">Notify me</button>
+        </div>
+        <div id="interestSuccess" class="beta-success" style="display:none">
+          <div class="beta-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="beta-success-badge">You're on the list</span>
+          <h3>We'll let you know!</h3>
+          <p class="beta-success-text">You'll be among the first to hear when premium plans go live. Thank you for your interest!</p>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA with stargazing background -->
     <section class="cta-hero">
@@ -479,6 +515,40 @@
       if(res.ok){document.getElementById('betaForm').style.display='none';document.getElementById('betaSuccess').style.display='block'}
       else{err.textContent=res.data.error||'Something went wrong. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Submit Application'}
     }).catch(function(){err.textContent='Network error. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Submit Application'});
+  }
+  function openInterest(el){
+    var card=el.closest('.pricing-card');
+    var plan=card&&card.classList.contains('popular')?'pro':'plus';
+    document.getElementById('interestPlan').value=plan;
+    document.getElementById('interestForm').style.display='block';
+    document.getElementById('interestSuccess').style.display='none';
+    document.getElementById('interestError').classList.remove('visible');
+    document.getElementById('interestOverlay').classList.add('open');
+  }
+  var _intLastSubmit=0;
+  function submitInterest(){
+    var btn=document.getElementById('interestSubmit');
+    var err=document.getElementById('interestError');
+    var name=document.getElementById('interestName').value.trim();
+    var email=document.getElementById('interestEmail').value.trim();
+    var comment=document.getElementById('interestComment').value.trim();
+    var plan=document.getElementById('interestPlan').value;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    err.classList.remove('visible');
+    if(!name||!nameRe.test(name)){err.textContent='Please enter a valid name.';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Please enter a valid email address.';err.classList.add('visible');return}
+    if(comment.length>500){err.textContent='Comment must be under 500 characters.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_intLastSubmit<10000){err.textContent='Please wait a few seconds.';err.classList.add('visible');return}_intLastSubmit=now;
+    btn.disabled=true;btn.textContent='Submitting...';
+    fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/early-interest',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5heHV1bndudHF4aGpwcXp2bW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTczOTYsImV4cCI6MjA4ODExNzM5Nn0.3EAylVCMOclEfN0I3hP7OuXrK9vQfwyxL_m4PgSggaQ'},
+      body:JSON.stringify({name:name,email:email,plan:plan,comment:comment||null})
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})}).then(function(res){
+      if(res.ok){document.getElementById('interestForm').style.display='none';document.getElementById('interestSuccess').style.display='block'}
+      else{err.textContent=res.data.error||'Something went wrong. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Notify me'}
+    }).catch(function(){err.textContent='Network error. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Notify me'});
   }
   </script>
 </body>

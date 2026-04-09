@@ -380,7 +380,7 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Идеи для свиданий рядом с вами</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ежемесячные отчёты о прогрессе</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Уведомите%20о%20INTIMO%20Premium" rel="noopener noreferrer">Уведомить меня</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Уведомить меня</button>
             <p class="pricing-analogy">Меньше <em>одного кофе в неделю</em></p>
           </div>
           <div class="pricing-card popular reveal reveal-delay-2">
@@ -395,13 +395,49 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Напоминания о датах + идеи подарков</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>История ваших отношений как таймлайн</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Уведомите%20о%20INTIMO%20Premium" rel="noopener noreferrer">Уведомить меня</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Уведомить меня</button>
             <p class="pricing-analogy">Дешевле вашей <em>ИИ-подписки для работы</em>. Эта - для любви.</p>
           </div>
         </div>
         <p class="pricing-free-note reveal"><strong>Бесплатно навсегда:</strong> Сопряжение, планирование, настроение, желания, привычки и трекер цикла всегда бесплатны.</p>
       </div>
     </section>
+
+    <!-- Early interest modal -->
+    <div class="beta-overlay" id="interestOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+      <div class="beta-modal">
+        <button class="beta-modal-close" onclick="document.getElementById('interestOverlay').classList.remove('open')" aria-label="Закрыть">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div id="interestForm">
+          <h3>Узнать первым</h3>
+          <p class="beta-modal-sub">Будьте первыми, кто узнает о запуске премиум-планов.</p>
+          <input type="hidden" id="interestPlan" value="">
+          <div class="beta-field">
+            <label for="interestName">Ваше имя</label>
+            <input type="text" id="interestName" autocomplete="name" placeholder="Алексей" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestEmail">Ваш email</label>
+            <input type="email" id="interestEmail" autocomplete="email" placeholder="alex@example.com" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestComment">Хотите что-то добавить? <span style="font-weight:400;color:var(--color-text-muted)">(необязательно)</span></label>
+            <textarea id="interestComment" placeholder="Ваши пожелания, идеи, ожидания от премиум-функций..."></textarea>
+          </div>
+          <div class="beta-error" id="interestError"></div>
+          <button class="btn-beta-submit" id="interestSubmit" onclick="submitInterest()">Уведомить меня</button>
+        </div>
+        <div id="interestSuccess" class="beta-success" style="display:none">
+          <div class="beta-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="beta-success-badge">Вы в списке</span>
+          <h3>Мы вас уведомим!</h3>
+          <p class="beta-success-text">Вы будете среди первых, кто узнает о запуске премиум-планов. Спасибо за интерес!</p>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA -->
     <section class="cta-hero">
@@ -469,6 +505,40 @@
       if(res.ok){document.getElementById('betaForm').style.display='none';document.getElementById('betaSuccess').style.display='block'}
       else{err.textContent=res.data.error||'Что-то пошло не так. Попробуйте ещё раз.';err.classList.add('visible');btn.disabled=false;btn.textContent='Отправить заявку'}
     }).catch(function(){err.textContent='Ошибка сети. Попробуйте ещё раз.';err.classList.add('visible');btn.disabled=false;btn.textContent='Отправить заявку'});
+  }
+  function openInterest(el){
+    var card=el.closest('.pricing-card');
+    var plan=card&&card.classList.contains('popular')?'pro':'plus';
+    document.getElementById('interestPlan').value=plan;
+    document.getElementById('interestForm').style.display='block';
+    document.getElementById('interestSuccess').style.display='none';
+    document.getElementById('interestError').classList.remove('visible');
+    document.getElementById('interestOverlay').classList.add('open');
+  }
+  var _intLastSubmit=0;
+  function submitInterest(){
+    var btn=document.getElementById('interestSubmit');
+    var err=document.getElementById('interestError');
+    var name=document.getElementById('interestName').value.trim();
+    var email=document.getElementById('interestEmail').value.trim();
+    var comment=document.getElementById('interestComment').value.trim();
+    var plan=document.getElementById('interestPlan').value;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    err.classList.remove('visible');
+    if(!name||!nameRe.test(name)){err.textContent='Пожалуйста, введите корректное имя.';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Пожалуйста, введите корректный email.';err.classList.add('visible');return}
+    if(comment.length>500){err.textContent='Комментарий должен быть до 500 символов.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_intLastSubmit<10000){err.textContent='Подождите несколько секунд.';err.classList.add('visible');return}_intLastSubmit=now;
+    btn.disabled=true;btn.textContent='Отправка...';
+    fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/early-interest',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5heHV1bndudHF4aGpwcXp2bW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTczOTYsImV4cCI6MjA4ODExNzM5Nn0.3EAylVCMOclEfN0I3hP7OuXrK9vQfwyxL_m4PgSggaQ'},
+      body:JSON.stringify({name:name,email:email,plan:plan,comment:comment||null})
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})}).then(function(res){
+      if(res.ok){document.getElementById('interestForm').style.display='none';document.getElementById('interestSuccess').style.display='block'}
+      else{err.textContent=res.data.error||'Что-то пошло не так. Попробуйте ещё раз.';err.classList.add('visible');btn.disabled=false;btn.textContent='Уведомить меня'}
+    }).catch(function(){err.textContent='Ошибка сети. Попробуйте ещё раз.';err.classList.add('visible');btn.disabled=false;btn.textContent='Уведомить меня'});
   }
   </script>
 </body>

@@ -378,7 +378,7 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Idei de intalniri langa voi</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rapoarte lunare de progres</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Anuntati-ma%20despre%20INTIMO%20Premium" rel="noopener noreferrer">Anunta-ma</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Anunta-ma</button>
             <p class="pricing-analogy">Mai putin de <em>o cafea pe saptamana</em></p>
           </div>
           <div class="pricing-card popular reveal reveal-delay-2">
@@ -393,13 +393,49 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Remindere aniversari + idei de cadouri</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Povestea relatiei ca timeline</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Anuntati-ma%20despre%20INTIMO%20Premium" rel="noopener noreferrer">Anunta-ma</a>
+            <button class="pricing-cta notify" onclick="openInterest(this)">Anunta-ma</button>
             <p class="pricing-analogy">Mai putin decat <em>abonamentul AI de lucru</em>. Acesta e pentru iubire.</p>
           </div>
         </div>
         <p class="pricing-free-note reveal"><strong>Gratuit pentru totdeauna:</strong> Conectare, planificare, dispozitie, dorinte, obiceiuri zilnice si ciclul sunt intotdeauna gratuite.</p>
       </div>
     </section>
+
+    <!-- Early interest modal -->
+    <div class="beta-overlay" id="interestOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+      <div class="beta-modal">
+        <button class="beta-modal-close" onclick="document.getElementById('interestOverlay').classList.remove('open')" aria-label="Inchide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div id="interestForm">
+          <h3>Fii primul care afla</h3>
+          <p class="beta-modal-sub">Fiti printre primii care afla cand planurile premium devin disponibile.</p>
+          <input type="hidden" id="interestPlan" value="">
+          <div class="beta-field">
+            <label for="interestName">Numele tau</label>
+            <input type="text" id="interestName" autocomplete="name" placeholder="Alexandru" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestEmail">Email-ul tau</label>
+            <input type="email" id="interestEmail" autocomplete="email" placeholder="alex@example.com" required>
+          </div>
+          <div class="beta-field">
+            <label for="interestComment">Doriti sa adaugati ceva? <span style="font-weight:400;color:var(--color-text-muted)">(optional)</span></label>
+            <textarea id="interestComment" placeholder="Dorintele, ideile, asteptarile dvs. de la functiile premium..."></textarea>
+          </div>
+          <div class="beta-error" id="interestError"></div>
+          <button class="btn-beta-submit" id="interestSubmit" onclick="submitInterest()">Anunta-ma</button>
+        </div>
+        <div id="interestSuccess" class="beta-success" style="display:none">
+          <div class="beta-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="beta-success-badge">Esti pe lista</span>
+          <h3>Te vom anunta!</h3>
+          <p class="beta-success-text">Veti fi printre primii care afla cand planurile premium devin disponibile. Multumim pentru interes!</p>
+        </div>
+      </div>
+    </div>
 
     <!-- CTA -->
     <section class="cta-hero">
@@ -467,6 +503,40 @@
       if(res.ok){document.getElementById('betaForm').style.display='none';document.getElementById('betaSuccess').style.display='block'}
       else{err.textContent=res.data.error||'Ceva nu a functionat. Va rugam incercati din nou.';err.classList.add('visible');btn.disabled=false;btn.textContent='Trimite aplicatia'}
     }).catch(function(){err.textContent='Eroare de retea. Va rugam incercati din nou.';err.classList.add('visible');btn.disabled=false;btn.textContent='Trimite aplicatia'});
+  }
+  function openInterest(el){
+    var card=el.closest('.pricing-card');
+    var plan=card&&card.classList.contains('popular')?'pro':'plus';
+    document.getElementById('interestPlan').value=plan;
+    document.getElementById('interestForm').style.display='block';
+    document.getElementById('interestSuccess').style.display='none';
+    document.getElementById('interestError').classList.remove('visible');
+    document.getElementById('interestOverlay').classList.add('open');
+  }
+  var _intLastSubmit=0;
+  function submitInterest(){
+    var btn=document.getElementById('interestSubmit');
+    var err=document.getElementById('interestError');
+    var name=document.getElementById('interestName').value.trim();
+    var email=document.getElementById('interestEmail').value.trim();
+    var comment=document.getElementById('interestComment').value.trim();
+    var plan=document.getElementById('interestPlan').value;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    err.classList.remove('visible');
+    if(!name||!nameRe.test(name)){err.textContent='Va rugam introduceti un nume valid.';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Va rugam introduceti un email valid.';err.classList.add('visible');return}
+    if(comment.length>500){err.textContent='Comentariul trebuie sa fie sub 500 de caractere.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_intLastSubmit<10000){err.textContent='Va rugam asteptati cateva secunde.';err.classList.add('visible');return}_intLastSubmit=now;
+    btn.disabled=true;btn.textContent='Se trimite...';
+    fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/early-interest',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5heHV1bndudHF4aGpwcXp2bW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTczOTYsImV4cCI6MjA4ODExNzM5Nn0.3EAylVCMOclEfN0I3hP7OuXrK9vQfwyxL_m4PgSggaQ'},
+      body:JSON.stringify({name:name,email:email,plan:plan,comment:comment||null})
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})}).then(function(res){
+      if(res.ok){document.getElementById('interestForm').style.display='none';document.getElementById('interestSuccess').style.display='block'}
+      else{err.textContent=res.data.error||'Ceva nu a functionat. Va rugam incercati din nou.';err.classList.add('visible');btn.disabled=false;btn.textContent='Anunta-ma'}
+    }).catch(function(){err.textContent='Eroare de retea. Va rugam incercati din nou.';err.classList.add('visible');btn.disabled=false;btn.textContent='Anunta-ma'});
   }
   </script>
 </body>

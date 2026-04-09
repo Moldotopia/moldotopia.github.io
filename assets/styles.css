@@ -1453,8 +1453,10 @@ main { flex: 1; }
   border: 1px solid rgba(255,255,255,0.15);
   text-decoration: none;
   display: block;
+  width: 100%;
   cursor: pointer;
   transition: all var(--transition-fast);
+  font-family: inherit;
 }
 
 .pricing-cta.notify:hover {
@@ -2744,4 +2746,49 @@ body::before {
     padding: 32px 24px;
     border-radius: var(--radius-lg);
   }
+}
+
+/* ============================================
+   EARLY INTEREST (Notify Me) — reuses beta modal styles
+   ============================================ */
+
+.beta-field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  box-shadow: var(--shadow-inset-highlight);
+  resize: vertical;
+  min-height: 80px;
+  max-height: 160px;
+  line-height: 1.5;
+}
+
+.beta-field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow), var(--shadow-inset-highlight);
+}
+
+.beta-field textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.interest-plan-label {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
 }
