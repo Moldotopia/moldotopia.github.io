@@ -1596,6 +1596,35 @@ main { flex: 1; }
   font-weight: 600;
 }
 
+/* Discount perk line */
+.perk-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 6px 14px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #22c55e;
+  letter-spacing: 0.01em;
+}
+
+.perk-line svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Dark background variant (beta section) */
+.beta-card .perk-line {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #4ade80;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .pricing { padding: 56px 24px 80px; }
