@@ -576,6 +576,7 @@
 
   <script>
   (function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('visible');o.unobserve(i.target)}})},{threshold:0.15});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)})})();
+  (function(){var h=document.querySelector('.site-header');window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>40)},{passive:true})})();
   </script>
   <script src="assets/demos/trinity-chat.js" defer></script>
   <script src="assets/forms.js" defer></script>
