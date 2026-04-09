@@ -30,6 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" crossorigin="anonymous">
+  <link rel="preload" as="image" href="../assets/images/hero-couple.webp" type="image/webp">
   <link rel="stylesheet" href="../assets/styles.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"INTIMO","applicationCategory":"LifestyleApplication","operatingSystem":"Android","description":"Aplicatie pentru cupluri: planificare, potrivirea dorintelor, starea de spirit si sugestii inteligente. Criptare end-to-end.","url":"https://intimo.pro/ro/","author":{"@type":"Person","name":"Vladimir Ternavschi"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","description":"Conectare partener, planificator, stare de spirit, dorinte, obiceiuri, tracker ciclu"},{"@type":"Offer","name":"Intimo Plus","price":"4.99","priceCurrency":"USD","description":"Ghidare personala Trinity, chat nelimitat, tendinte dispozitie, scor sanatate cuplu","availability":"https://schema.org/PreOrder"},{"@type":"Offer","name":"Intimo Pro","price":"19.99","priceCurrency":"USD","description":"AI rezerva intalniri, remindere aniversari, cronologia relatiei","availability":"https://schema.org/PreOrder"}]}
@@ -66,7 +67,10 @@
     <section class="hero starfield">
       <div class="stars"></div>
       <div class="hero-bg-image">
-        <img src="../assets/images/hero-couple.png" alt="Cuplu folosind aplicatia INTIMO" loading="eager">
+        <picture>
+          <source srcset="../assets/images/hero-couple.webp" type="image/webp">
+          <img src="../assets/images/hero-couple.png" alt="Cuplu folosind aplicatia INTIMO" width="1536" height="1024" loading="eager">
+        </picture>
       </div>
       <div class="hero-inner">
         <div class="connection-symbol">
@@ -299,7 +303,10 @@
 
     <!-- Visual break -->
     <div class="visual-break">
-      <img src="../assets/images/sunset-moment.png" alt="Cuplu privind apusul" loading="lazy">
+      <picture>
+        <source srcset="../assets/images/sunset-moment.webp" type="image/webp">
+        <img src="../assets/images/sunset-moment.png" alt="Cuplu privind apusul" width="1536" height="1024" loading="lazy">
+      </picture>
       <div class="visual-break-text">
         <p>Relatiile se construiesc din mici pasi zilnici</p>
         <span>Filosofia INTIMO</span>
@@ -523,7 +530,10 @@
 
     <!-- CTA -->
     <section class="cta-hero">
-      <img class="cta-hero-bg" src="../assets/images/stargazing-night.png" alt="Cuplu privind stelele sub cerul noptii" loading="lazy">
+      <picture>
+        <source srcset="../assets/images/stargazing-night.webp" type="image/webp">
+        <img class="cta-hero-bg" src="../assets/images/stargazing-night.png" alt="Cuplu privind stelele sub cerul noptii" width="1536" height="1024" loading="lazy">
+      </picture>
       <div class="cta-hero-overlay"></div>
       <div class="cta-hero-inner">
         <p class="cta-hero-tagline">Spatiul vostru privat, sub acelasi cer</p>
