@@ -875,6 +875,107 @@ main { flex: 1; }
   50% { opacity: 0.5; transform: scale(1.12); }
 }
 
+/* Feature demo prompt */
+.demo-prompt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: demoPromptIn 0.3s ease;
+}
+
+@keyframes demoPromptIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.demo-prompt {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  animation: demoPromptCard 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes demoPromptCard {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.demo-prompt h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.demo-prompt p {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.demo-prompt-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.demo-prompt-btn {
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.demo-prompt-btn.primary {
+  background: var(--gradient-button);
+  color: #fff;
+  box-shadow: var(--shadow-button);
+}
+
+.demo-prompt-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.demo-prompt-btn.secondary {
+  background: var(--color-primary-light);
+  color: var(--color-text-secondary);
+}
+
+.demo-prompt-btn.secondary:hover {
+  background: var(--color-border-light);
+}
+
+/* Try-it hint badge in post-demo message */
+.demo-tryit-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #d44060, #c0365a);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
 /* ============================================
    SOCIAL PROOF — testimonials
    ============================================ */
