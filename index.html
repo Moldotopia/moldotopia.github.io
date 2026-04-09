@@ -160,8 +160,8 @@
             <input type="checkbox" id="betaConsent">
             <span>My partner knows about this and agrees to participate in the beta testing.</span>
           </label>
-          <div class="beta-error" id="betaError"></div>
-          <button class="btn-beta-submit" id="betaSubmit" onclick="submitBeta()">Submit Application</button>
+          <div class="beta-error" id="betaError" data-err-name="Please enter a valid name (letters, spaces, hyphens, 2-50 characters)." data-err-email="Please enter a valid email address." data-err-device="Device model contains invalid characters." data-err-partner="Please enter a valid partner email address." data-err-same="Partner email must be different from yours." data-err-consent="Please confirm your partner agrees to participate." data-err-wait="Please wait a few seconds before trying again." data-err-generic="Something went wrong. Please try again." data-err-network="Network error. Please try again."></div>
+          <button class="btn-beta-submit" id="betaSubmit" data-loading="Submitting..." onclick="submitBeta()">Submit Application</button>
         </div>
         <div id="betaSuccess" class="beta-success" style="display:none">
           <div class="beta-success-icon">
@@ -522,8 +522,8 @@
             <label for="interestComment">Anything you'd like to share? <span style="font-weight:400;color:var(--color-text-muted)">(optional)</span></label>
             <textarea id="interestComment" placeholder="Your wishes, ideas, what you'd love to see in premium..."></textarea>
           </div>
-          <div class="beta-error" id="interestError"></div>
-          <button class="btn-beta-submit" id="interestSubmit" onclick="submitInterest()">Notify me</button>
+          <div class="beta-error" id="interestError" data-err-name="Please enter a valid name." data-err-email="Please enter a valid email address." data-err-comment="Comment must be under 500 characters." data-err-wait="Please wait a few seconds." data-err-generic="Something went wrong. Please try again." data-err-network="Network error. Please try again."></div>
+          <button class="btn-beta-submit" id="interestSubmit" data-loading="Submitting..." onclick="submitInterest()">Notify me</button>
         </div>
         <div id="interestSuccess" class="beta-success" style="display:none">
           <div class="beta-success-icon">
@@ -576,71 +576,6 @@
   (function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('visible');o.unobserve(i.target)}})},{threshold:0.15});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)})})();
   </script>
   <script src="assets/demos/trinity-chat.js" defer></script>
-  <script>
-  var _betaLastSubmit=0;
-  function submitBeta(){
-    var btn=document.getElementById('betaSubmit');
-    var err=document.getElementById('betaError');
-    var name=document.getElementById('betaName').value.trim();
-    var email=document.getElementById('betaEmail').value.trim();
-    var device=document.getElementById('betaDevice').value.trim();
-    var partnerEmail=document.getElementById('betaPartnerEmail').value.trim();
-    var consent=document.getElementById('betaConsent').checked;
-    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
-    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-    var deviceRe=/^[\p{L}0-9\s\-+().\/]{0,80}$/u;
-    err.classList.remove('visible');
-    if(!name||!nameRe.test(name)){err.textContent='Please enter a valid name (letters, spaces, hyphens only, 2-50 characters).';err.classList.add('visible');return}
-    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Please enter a valid email address.';err.classList.add('visible');return}
-    if(device&&!deviceRe.test(device)){err.textContent='Device model contains invalid characters.';err.classList.add('visible');return}
-    if(!partnerEmail||!emailRe.test(partnerEmail)||partnerEmail.length>254){err.textContent="Please enter a valid partner email address.";err.classList.add('visible');return}
-    if(email.toLowerCase()===partnerEmail.toLowerCase()){err.textContent='Partner email must be different from yours.';err.classList.add('visible');return}
-    if(!consent){err.textContent='Please confirm your partner agrees to participate.';err.classList.add('visible');return}
-    var now=Date.now();if(now-_betaLastSubmit<10000){err.textContent='Please wait a few seconds before trying again.';err.classList.add('visible');return}_betaLastSubmit=now;
-    btn.disabled=true;btn.textContent='Submitting...';
-    fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/beta-signup',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5heHV1bndudHF4aGpwcXp2bW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTczOTYsImV4cCI6MjA4ODExNzM5Nn0.3EAylVCMOclEfN0I3hP7OuXrK9vQfwyxL_m4PgSggaQ'},
-      body:JSON.stringify({name:name,email:email,device_model:device||null,partner_email:partnerEmail,partner_confirmed:consent})
-    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})}).then(function(res){
-      if(res.ok){document.getElementById('betaForm').style.display='none';document.getElementById('betaSuccess').style.display='block'}
-      else{err.textContent=res.data.error||'Something went wrong. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Submit Application'}
-    }).catch(function(){err.textContent='Network error. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Submit Application'});
-  }
-  function openInterest(el){
-    var card=el.closest('.pricing-card');
-    var plan=card&&card.classList.contains('popular')?'pro':'plus';
-    document.getElementById('interestPlan').value=plan;
-    document.getElementById('interestForm').style.display='block';
-    document.getElementById('interestSuccess').style.display='none';
-    document.getElementById('interestError').classList.remove('visible');
-    document.getElementById('interestOverlay').classList.add('open');
-  }
-  var _intLastSubmit=0;
-  function submitInterest(){
-    var btn=document.getElementById('interestSubmit');
-    var err=document.getElementById('interestError');
-    var name=document.getElementById('interestName').value.trim();
-    var email=document.getElementById('interestEmail').value.trim();
-    var comment=document.getElementById('interestComment').value.trim();
-    var plan=document.getElementById('interestPlan').value;
-    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
-    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-    err.classList.remove('visible');
-    if(!name||!nameRe.test(name)){err.textContent='Please enter a valid name.';err.classList.add('visible');return}
-    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Please enter a valid email address.';err.classList.add('visible');return}
-    if(comment.length>500){err.textContent='Comment must be under 500 characters.';err.classList.add('visible');return}
-    var now=Date.now();if(now-_intLastSubmit<10000){err.textContent='Please wait a few seconds.';err.classList.add('visible');return}_intLastSubmit=now;
-    btn.disabled=true;btn.textContent='Submitting...';
-    fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/early-interest',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5heHV1bndudHF4aGpwcXp2bW9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3NTczOTYsImV4cCI6MjA4ODExNzM5Nn0.3EAylVCMOclEfN0I3hP7OuXrK9vQfwyxL_m4PgSggaQ'},
-      body:JSON.stringify({name:name,email:email,plan:plan,comment:comment||null})
-    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})}).then(function(res){
-      if(res.ok){document.getElementById('interestForm').style.display='none';document.getElementById('interestSuccess').style.display='block'}
-      else{err.textContent=res.data.error||'Something went wrong. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Notify me'}
-    }).catch(function(){err.textContent='Network error. Please try again.';err.classList.add('visible');btn.disabled=false;btn.textContent='Notify me'});
-  }
-  </script>
+  <script src="assets/forms.js" defer></script>
 </body>
 </html>
