@@ -554,7 +554,7 @@ main { flex: 1; }
    ============================================ */
 
 .how-it-works {
-  padding: 40px 32px 220px;
+  padding: 40px 32px 120px;
   background: var(--color-footer-bg);
   color: #fff;
   position: relative;
@@ -568,20 +568,19 @@ main { flex: 1; }
   bottom: 0;
   left: 0;
   right: 0;
-  height: 220px;
+  height: 120px;
   background: linear-gradient(180deg,
     transparent 0%,
-    rgba(247, 251, 255, 0.01) 8%,
-    rgba(247, 251, 255, 0.03) 16%,
-    rgba(247, 251, 255, 0.07) 24%,
-    rgba(247, 251, 255, 0.12) 32%,
-    rgba(247, 251, 255, 0.20) 40%,
-    rgba(247, 251, 255, 0.30) 48%,
-    rgba(247, 251, 255, 0.42) 56%,
-    rgba(247, 251, 255, 0.56) 64%,
-    rgba(247, 251, 255, 0.70) 72%,
-    rgba(247, 251, 255, 0.82) 80%,
-    rgba(247, 251, 255, 0.92) 88%,
+    rgba(247, 251, 255, 0.02) 8%,
+    rgba(247, 251, 255, 0.06) 16%,
+    rgba(247, 251, 255, 0.12) 24%,
+    rgba(247, 251, 255, 0.20) 32%,
+    rgba(247, 251, 255, 0.32) 40%,
+    rgba(247, 251, 255, 0.45) 50%,
+    rgba(247, 251, 255, 0.60) 60%,
+    rgba(247, 251, 255, 0.75) 70%,
+    rgba(247, 251, 255, 0.87) 80%,
+    rgba(247, 251, 255, 0.95) 90%,
     var(--color-bg) 100%
   );
   pointer-events: none;
@@ -1397,7 +1396,7 @@ main { flex: 1; }
    ============================================ */
 
 .pricing {
-  padding: 120px 32px 100px;
+  padding: 80px 32px 100px;
   background: var(--color-footer-bg);
   color: #fff;
   position: relative;
@@ -1409,18 +1408,18 @@ main { flex: 1; }
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 200px;
+  height: 120px;
   background: linear-gradient(180deg,
     var(--color-bg) 0%,
-    rgba(247, 251, 255, 0.92) 10%,
-    rgba(247, 251, 255, 0.82) 20%,
-    rgba(247, 251, 255, 0.70) 30%,
-    rgba(247, 251, 255, 0.56) 40%,
-    rgba(247, 251, 255, 0.42) 50%,
-    rgba(247, 251, 255, 0.30) 60%,
-    rgba(247, 251, 255, 0.18) 70%,
-    rgba(247, 251, 255, 0.08) 80%,
-    rgba(247, 251, 255, 0.02) 90%,
+    rgba(247, 251, 255, 0.95) 8%,
+    rgba(247, 251, 255, 0.87) 16%,
+    rgba(247, 251, 255, 0.75) 24%,
+    rgba(247, 251, 255, 0.60) 34%,
+    rgba(247, 251, 255, 0.45) 44%,
+    rgba(247, 251, 255, 0.32) 54%,
+    rgba(247, 251, 255, 0.20) 64%,
+    rgba(247, 251, 255, 0.10) 76%,
+    rgba(247, 251, 255, 0.03) 88%,
     transparent 100%);
   pointer-events: none;
   z-index: 1;
