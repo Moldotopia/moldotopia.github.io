@@ -155,8 +155,8 @@
         </div>
         <div id="betaSuccess" class="beta-success" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>You're on the list!</h3>
-          <p>We'll send you an invite to both emails once the beta is ready. Thank you for helping us build INTIMO.</p>
+          <h3>Application received!</h3>
+          <p>You will receive an email invitation to join the beta test once your application is reviewed. If all tester spots are filled, our team will reach out to you with next steps. Thank you for your interest in INTIMO!</p>
         </div>
       </div>
     </div>
@@ -429,6 +429,7 @@
   </script>
   <script src="assets/demos/trinity-chat.js" defer></script>
   <script>
+  var _betaLastSubmit=0;
   function submitBeta(){
     var btn=document.getElementById('betaSubmit');
     var err=document.getElementById('betaError');
@@ -437,12 +438,17 @@
     var device=document.getElementById('betaDevice').value.trim();
     var partnerEmail=document.getElementById('betaPartnerEmail').value.trim();
     var consent=document.getElementById('betaConsent').checked;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    var deviceRe=/^[\p{L}0-9\s\-+().\/]{0,80}$/u;
     err.classList.remove('visible');
-    if(!name||name.length<2){err.textContent='Please enter your name.';err.classList.add('visible');return}
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Please enter a valid email.';err.classList.add('visible');return}
-    if(!partnerEmail||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerEmail)){err.textContent="Please enter your partner's email.";err.classList.add('visible');return}
+    if(!name||!nameRe.test(name)){err.textContent='Please enter a valid name (letters, spaces, hyphens only, 2-50 characters).';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Please enter a valid email address.';err.classList.add('visible');return}
+    if(device&&!deviceRe.test(device)){err.textContent='Device model contains invalid characters.';err.classList.add('visible');return}
+    if(!partnerEmail||!emailRe.test(partnerEmail)||partnerEmail.length>254){err.textContent="Please enter a valid partner email address.";err.classList.add('visible');return}
     if(email.toLowerCase()===partnerEmail.toLowerCase()){err.textContent='Partner email must be different from yours.';err.classList.add('visible');return}
     if(!consent){err.textContent='Please confirm your partner agrees to participate.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_betaLastSubmit<10000){err.textContent='Please wait a few seconds before trying again.';err.classList.add('visible');return}_betaLastSubmit=now;
     btn.disabled=true;btn.textContent='Submitting...';
     fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/beta-signup',{
       method:'POST',

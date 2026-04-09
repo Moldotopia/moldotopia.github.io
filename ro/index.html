@@ -152,8 +152,8 @@
         </div>
         <div id="betaSuccess" class="beta-success" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>Esti pe lista!</h3>
-          <p>Vom trimite o invitatie pe ambele adrese de email cand beta va fi gata. Multumim ca ne ajutati sa construim INTIMO.</p>
+          <h3>Aplicatia a fost primita!</h3>
+          <p>Veti primi o invitatie pe email pentru a participa la testarea beta dupa ce aplicatia dvs. va fi examinata. Daca toate locurile sunt ocupate, echipa noastra va contacta cu pasii urmatori. Multumim pentru interesul acordat INTIMO!</p>
         </div>
       </div>
     </div>
@@ -417,6 +417,7 @@
   </script>
   <script src="../assets/demos/trinity-chat.js" defer></script>
   <script>
+  var _betaLastSubmit=0;
   function submitBeta(){
     var btn=document.getElementById('betaSubmit');
     var err=document.getElementById('betaError');
@@ -425,12 +426,17 @@
     var device=document.getElementById('betaDevice').value.trim();
     var partnerEmail=document.getElementById('betaPartnerEmail').value.trim();
     var consent=document.getElementById('betaConsent').checked;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    var deviceRe=/^[\p{L}0-9\s\-+().\/]{0,80}$/u;
     err.classList.remove('visible');
-    if(!name||name.length<2){err.textContent='Va rugam introduceti numele.';err.classList.add('visible');return}
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Va rugam introduceti un email valid.';err.classList.add('visible');return}
-    if(!partnerEmail||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerEmail)){err.textContent='Va rugam introduceti emailul partenerului.';err.classList.add('visible');return}
+    if(!name||!nameRe.test(name)){err.textContent='Va rugam introduceti un nume valid (litere, spatii, cratime, 2-50 caractere).';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Va rugam introduceti o adresa de email valida.';err.classList.add('visible');return}
+    if(device&&!deviceRe.test(device)){err.textContent='Modelul dispozitivului contine caractere invalide.';err.classList.add('visible');return}
+    if(!partnerEmail||!emailRe.test(partnerEmail)||partnerEmail.length>254){err.textContent='Va rugam introduceti o adresa de email valida a partenerului.';err.classList.add('visible');return}
     if(email.toLowerCase()===partnerEmail.toLowerCase()){err.textContent='Emailul partenerului trebuie sa fie diferit de al dvs.';err.classList.add('visible');return}
     if(!consent){err.textContent='Va rugam confirmati acordul partenerului.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_betaLastSubmit<10000){err.textContent='Va rugam asteptati cateva secunde inainte de a incerca din nou.';err.classList.add('visible');return}_betaLastSubmit=now;
     btn.disabled=true;btn.textContent='Se trimite...';
     fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/beta-signup',{
       method:'POST',

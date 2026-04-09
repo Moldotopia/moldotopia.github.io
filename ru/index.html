@@ -154,8 +154,8 @@
         </div>
         <div id="betaSuccess" class="beta-success" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>Вы в списке!</h3>
-          <p>Мы отправим приглашение на оба email, когда бета будет готова. Спасибо, что помогаете нам создавать INTIMO.</p>
+          <h3>Заявка принята!</h3>
+          <p>Вы получите приглашение на email для участия в бета-тестировании после рассмотрения заявки. Если все места будут заняты, наша команда свяжется с вами и сообщит о дальнейших шагах. Спасибо за интерес к INTIMO!</p>
         </div>
       </div>
     </div>
@@ -419,6 +419,7 @@
   </script>
   <script src="../assets/demos/trinity-chat.js" defer></script>
   <script>
+  var _betaLastSubmit=0;
   function submitBeta(){
     var btn=document.getElementById('betaSubmit');
     var err=document.getElementById('betaError');
@@ -427,12 +428,17 @@
     var device=document.getElementById('betaDevice').value.trim();
     var partnerEmail=document.getElementById('betaPartnerEmail').value.trim();
     var consent=document.getElementById('betaConsent').checked;
+    var nameRe=/^[\p{L}\s\-'.]{2,50}$/u;
+    var emailRe=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    var deviceRe=/^[\p{L}0-9\s\-+().\/]{0,80}$/u;
     err.classList.remove('visible');
-    if(!name||name.length<2){err.textContent='Пожалуйста, введите ваше имя.';err.classList.add('visible');return}
-    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Пожалуйста, введите корректный email.';err.classList.add('visible');return}
-    if(!partnerEmail||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(partnerEmail)){err.textContent='Пожалуйста, введите email партнёра.';err.classList.add('visible');return}
+    if(!name||!nameRe.test(name)){err.textContent='Пожалуйста, введите корректное имя (буквы, пробелы, дефисы, 2-50 символов).';err.classList.add('visible');return}
+    if(!email||!emailRe.test(email)||email.length>254){err.textContent='Пожалуйста, введите корректный email.';err.classList.add('visible');return}
+    if(device&&!deviceRe.test(device)){err.textContent='Модель устройства содержит недопустимые символы.';err.classList.add('visible');return}
+    if(!partnerEmail||!emailRe.test(partnerEmail)||partnerEmail.length>254){err.textContent='Пожалуйста, введите корректный email партнёра.';err.classList.add('visible');return}
     if(email.toLowerCase()===partnerEmail.toLowerCase()){err.textContent='Email партнёра должен отличаться от вашего.';err.classList.add('visible');return}
     if(!consent){err.textContent='Пожалуйста, подтвердите согласие партнёра.';err.classList.add('visible');return}
+    var now=Date.now();if(now-_betaLastSubmit<10000){err.textContent='Подождите несколько секунд перед повторной попыткой.';err.classList.add('visible');return}_betaLastSubmit=now;
     btn.disabled=true;btn.textContent='Отправка...';
     fetch('https://naxuunwntqxhjpqzvmos.supabase.co/functions/v1/beta-signup',{
       method:'POST',
