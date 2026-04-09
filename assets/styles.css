@@ -1764,7 +1764,7 @@ main { flex: 1; }
 .perk-line {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 6px;
   margin-top: 14px;
   padding: 6px 0;
