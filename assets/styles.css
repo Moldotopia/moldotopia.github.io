@@ -1490,6 +1490,33 @@ main { flex: 1; }
   font-weight: 600;
 }
 
+/* Premium line glow — gentle pulse that draws attention then settles */
+.pricing-glow {
+  display: inline-block;
+  color: #7eb8ff;
+  animation: pricingGlow 4s ease-in-out 0.5s 1 both;
+}
+
+@keyframes pricingGlow {
+  0% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+  30% {
+    opacity: 1;
+    text-shadow: 0 0 18px rgba(58, 123, 213, 0.4), 0 0 40px rgba(91, 155, 213, 0.15);
+  }
+  70% {
+    opacity: 1;
+    text-shadow: 0 0 18px rgba(58, 123, 213, 0.4), 0 0 40px rgba(91, 155, 213, 0.15);
+  }
+  100% {
+    opacity: 0.85;
+    text-shadow: none;
+    color: var(--color-footer-text);
+  }
+}
+
 /* Feature descriptions inside list items */
 .pricing-features li small {
   display: block;
