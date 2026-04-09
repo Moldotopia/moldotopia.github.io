@@ -963,17 +963,43 @@ main { flex: 1; }
   background: var(--color-border-light);
 }
 
-/* Try-it hint badge in post-demo message */
+/* Try-it badge replica in post-demo message */
 .demo-tryit-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  background: linear-gradient(135deg, #d44060, #c0365a);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px 4px 9px;
+  background: linear-gradient(135deg, #4a8de0, #2a65b8);
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  border-radius: 6px;
-  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(42, 101, 184, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   vertical-align: middle;
+}
+
+.demo-tryit-play {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 7px;
+  border-color: transparent transparent transparent #fff;
+  flex-shrink: 0;
+}
+
+/* "Got it" button - green */
+.demo-prompt-btn.gotit {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.demo-prompt-btn.gotit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(34, 197, 94, 0.4);
 }
 
 /* ============================================

@@ -6,12 +6,19 @@
     ro: { title: 'Banca de dorinte', like: 'DA', nope: 'NU', counter: '{n} din {t}', st: 'Dorinte explorate!', sm: 'Ati explorat dorintele.', hint: 'Glisati stanga sau dreapta' }
   };
   var wishes = [
-    { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.png' },
-    { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.png' },
-    { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.png' },
-    { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.png' },
-    { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.png' }
+    { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.webp' },
+    { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.webp' },
+    { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.webp' },
+    { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.webp' },
+    { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.webp' }
   ];
+
+  // Preload images for instant display
+  function preloadImages() {
+    var base = (window.location.pathname.indexOf('/ru') === 0 || window.location.pathname.indexOf('/ro') === 0) ? '../' : '';
+    wishes.forEach(function(w) { var img = new Image(); img.src = base + 'assets/images/' + w.img; });
+  }
+  preloadImages();
 
   function getLang() { var p = window.location.pathname; return p.indexOf('/ru') === 0 ? 'ru' : p.indexOf('/ro') === 0 ? 'ro' : 'en'; }
   function loadCSS(f) { if (document.getElementById('demo-css-' + f)) return; var b = (window.location.pathname.indexOf('/ru') === 0 || window.location.pathname.indexOf('/ro') === 0) ? '../' : ''; var l = document.createElement('link'); l.id = 'demo-css-' + f; l.rel = 'stylesheet'; l.href = b + 'assets/demos/' + f; document.head.appendChild(l); }

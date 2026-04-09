@@ -7,7 +7,7 @@
       yes: 'Show me',
       no: 'Later',
       doneTitle: 'There\'s more to explore!',
-      doneDesc: 'Each feature has a <span class="demo-tryit-badge">Try it</span> button. Tap it to see how it works inside the app.',
+      doneDesc: 'Each feature has a <span class="demo-tryit-badge"><span class="demo-tryit-play"></span>Try it</span> button. Tap it to see how it works inside the app.',
       doneBtn: 'Got it'
     },
     ru: {
@@ -16,7 +16,7 @@
       yes: 'Показать',
       no: 'Позже',
       doneTitle: 'Это ещё не всё!',
-      doneDesc: 'У каждой функции есть кнопка <span class="demo-tryit-badge">Попробуй</span>. Нажмите, чтобы увидеть, как она работает в приложении.',
+      doneDesc: 'У каждой функции есть кнопка <span class="demo-tryit-badge"><span class="demo-tryit-play"></span>Попробуй</span>. Нажмите, чтобы увидеть, как она работает в приложении.',
       doneBtn: 'Понятно'
     },
     ro: {
@@ -25,7 +25,7 @@
       yes: 'Arata-mi',
       no: 'Mai tarziu',
       doneTitle: 'Mai sunt multe de explorat!',
-      doneDesc: 'Fiecare functie are un buton <span class="demo-tryit-badge">Incearca</span>. Apasati-l pentru a vedea cum functioneaza in aplicatie.',
+      doneDesc: 'Fiecare functie are un buton <span class="demo-tryit-badge"><span class="demo-tryit-play"></span>Incearca</span>. Apasati-l pentru a vedea cum functioneaza in aplicatie.',
       doneBtn: 'Am inteles'
     }
   };
@@ -33,6 +33,22 @@
   function getLang() {
     var p = window.location.pathname;
     return p.indexOf('/ru') === 0 ? 'ru' : p.indexOf('/ro') === 0 ? 'ro' : 'en';
+  }
+
+  function getBase() {
+    var p = window.location.pathname;
+    return (p.indexOf('/ru') === 0 || p.indexOf('/ro') === 0) ? '../' : '';
+  }
+
+  function loadSwipeAndOpen() {
+    if (window.openSwipeDemo) {
+      window.openSwipeDemo();
+    } else {
+      var s = document.createElement('script');
+      s.src = getBase() + 'assets/demos/swipe.js';
+      s.onload = function() { if (window.openSwipeDemo) window.openSwipeDemo(); };
+      document.head.appendChild(s);
+    }
   }
 
   function showPrompt(t, onYes) {
@@ -61,9 +77,7 @@
         obs.disconnect();
         setTimeout(function(){
           var t = i18n[getLang()];
-          showPrompt(t, function(){
-            if(window.openSwipeDemo) window.openSwipeDemo();
-          });
+          showPrompt(t, loadSwipeAndOpen);
         }, 800);
       }
     }, { threshold: 0.3 });
@@ -79,7 +93,7 @@
       '<h3>' + t.doneTitle + '</h3>' +
       '<p>' + t.doneDesc + '</p>' +
       '<div class="demo-prompt-actions">' +
-        '<button class="demo-prompt-btn primary" id="dp-ok">' + t.doneBtn + '</button>' +
+        '<button class="demo-prompt-btn gotit" id="dp-ok">' + t.doneBtn + '</button>' +
       '</div></div>';
     document.body.appendChild(ov);
     ov.querySelector('#dp-ok').addEventListener('click', function(){ ov.remove(); });
