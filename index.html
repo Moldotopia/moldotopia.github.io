@@ -16,6 +16,9 @@
   <meta name="twitter:description" content="Build stronger connection through small daily moments.">
   <meta name="twitter:image" content="https://intimo.pro/assets/og-image.svg">
   <meta name="theme-color" content="#3a7bd5">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://naxuunwntqxhjpqzvmos.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="author" content="Vladimir Ternavschi">
   <link rel="canonical" href="https://intimo.pro/">
   <link rel="alternate" hreflang="en" href="https://intimo.pro/">
@@ -26,7 +29,7 @@
   <link rel="apple-touch-icon" href="assets/images/app-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/styles.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"INTIMO","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Couples connection and intimacy planning app with end-to-end encryption, partner pairing, and relationship insights.","url":"https://intimo.pro","author":{"@type":"Person","name":"Vladimir Ternavschi"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -132,19 +135,19 @@
           <p class="beta-modal-sub">Both you and your partner need Android devices to participate.</p>
           <div class="beta-field">
             <label for="betaName">Your name</label>
-            <input type="text" id="betaName" placeholder="Alex" required>
+            <input type="text" id="betaName" autocomplete="name" placeholder="Alex" required>
           </div>
           <div class="beta-field">
             <label for="betaEmail">Your email</label>
-            <input type="email" id="betaEmail" placeholder="alex@example.com" required>
+            <input type="email" id="betaEmail" autocomplete="email" placeholder="alex@example.com" required>
           </div>
           <div class="beta-field">
             <label for="betaDevice">Android device model (optional)</label>
-            <input type="text" id="betaDevice" placeholder="Samsung Galaxy S24">
+            <input type="text" id="betaDevice" autocomplete="off" placeholder="Samsung Galaxy S24">
           </div>
           <div class="beta-field">
             <label for="betaPartnerEmail">Partner's email</label>
-            <input type="email" id="betaPartnerEmail" placeholder="partner@example.com" required>
+            <input type="email" id="betaPartnerEmail" autocomplete="off" placeholder="partner@example.com" required>
           </div>
           <label class="beta-checkbox">
             <input type="checkbox" id="betaConsent">
@@ -364,7 +367,7 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Date ideas near you</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly progress reports</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available.">Notify me</a>
+            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available." rel="noopener noreferrer">Notify me</a>
             <p class="pricing-analogy">Less than <em>a coffee a week</em></p>
           </div>
           <!-- Pro -->
@@ -383,7 +386,7 @@
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Smart anniversary reminders + gift ideas</li>
               <li><svg class="pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Your relationship story as a timeline</li>
             </ul>
-            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available.">Notify me</a>
+            <a class="pricing-cta notify" href="mailto:intsync0@gmail.com?subject=Notify%20me%20about%20INTIMO%20Premium&body=Hi!%20Please%20let%20me%20know%20when%20premium%20plans%20are%20available." rel="noopener noreferrer">Notify me</a>
             <p class="pricing-analogy">Less than your <em>AI work subscription</em>. This one's for love.</p>
           </div>
         </div>
@@ -400,7 +403,7 @@
         <div class="cta-card reveal">
           <h2>Questions or concerns?</h2>
           <p>We value your trust. Reach out anytime for privacy requests, support, or just to say hello.</p>
-          <a href="mailto:intsync0@gmail.com" class="btn btn-primary">intsync0@gmail.com</a>
+          <a href="mailto:intsync0@gmail.com" rel="noopener noreferrer" class="btn btn-primary">intsync0@gmail.com</a>
         </div>
       </div>
     </section>
@@ -419,7 +422,7 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="/terms">Terms</a></li>
-        <li><a href="mailto:intsync0@gmail.com">Contact</a></li>
+        <li><a href="mailto:intsync0@gmail.com" rel="noopener noreferrer">Contact</a></li>
       </ul>
     </div>
   </footer>
