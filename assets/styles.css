@@ -872,6 +872,78 @@ main { flex: 1; }
 }
 
 /* ============================================
+   SOCIAL PROOF — testimonials
+   ============================================ */
+
+.social-proof {
+  padding: 72px 32px;
+  background: var(--color-bg);
+}
+
+.social-proof-inner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-quote {
+  font-size: 0.94rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.testimonial-quote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.testimonial-author {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .social-proof {
+    padding: 56px 20px;
+  }
+}
+
+/* ============================================
    VISUAL BREAK — atmospheric photo band
    ============================================ */
 
