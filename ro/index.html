@@ -154,9 +154,17 @@
           <button class="btn-beta-submit" id="betaSubmit" onclick="submitBeta()">Trimite aplicatia</button>
         </div>
         <div id="betaSuccess" class="beta-success" style="display:none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <h3>Aplicatia a fost primita!</h3>
-          <p>Veti primi o invitatie pe email pentru a participa la testarea beta dupa ce aplicatia dvs. va fi examinata. Daca toate locurile sunt ocupate, echipa noastra va contacta cu pasii urmatori. Multumim pentru interesul acordat INTIMO!</p>
+          <div class="beta-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="beta-success-badge">Aplicatia primita</span>
+          <h3>Esti inscris!</h3>
+          <p class="beta-success-text">Aplicatia dvs. a fost trimisa cu succes. O vom examina si vom trimite o invitatie pe email.</p>
+          <div class="beta-success-divider"></div>
+          <div class="beta-success-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Daca toate locurile sunt ocupate, echipa noastra va contacta. Verificati inbox-ul si folderul spam.</span>
+          </div>
         </div>
       </div>
     </div>
