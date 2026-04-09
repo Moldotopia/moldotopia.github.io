@@ -773,22 +773,22 @@ main { flex: 1; }
 
 /* Per-card accent tint in bottom corner */
 .feature-card[data-demo="swipe"] {
-  background: linear-gradient(160deg, #ffffff 0%, #fff8f9 40%, #fdf0f2 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fffcfc 50%, #fef7f8 100%);
 }
 .feature-card[data-demo="planner"] {
-  background: linear-gradient(160deg, #ffffff 0%, #f8fbff 40%, #eef4fb 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fcfdff 50%, #f6f9fe 100%);
 }
 .feature-card[data-demo="daily"] {
-  background: linear-gradient(160deg, #ffffff 0%, #f6fbf6 40%, #ecf5eb 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fcfefc 50%, #f7fbf7 100%);
 }
 .feature-card[data-demo="barometer"] {
-  background: linear-gradient(160deg, #ffffff 0%, #f9f6ff 40%, #f0ecfc 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fcfbff 50%, #f8f6fe 100%);
 }
 .feature-card[data-demo="questions"] {
-  background: linear-gradient(160deg, #ffffff 0%, #f6faff 40%, #ecf3fa 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fbfdff 50%, #f5f9fd 100%);
 }
 .feature-card[data-demo="cycle"] {
-  background: linear-gradient(160deg, #ffffff 0%, #f5faf9 40%, #e9f4f1 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #fcfefd 50%, #f6fbf9 100%);
 }
 
 .feature-icon {
