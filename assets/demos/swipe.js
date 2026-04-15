@@ -5,18 +5,34 @@
     ru: { title: '\u0411\u0430\u043d\u043a \u0436\u0435\u043b\u0430\u043d\u0438\u0439', like: '\u0414\u0410', nope: '\u041d\u0415\u0422', counter: '{n} \u0438\u0437 {t}', st: '\u0416\u0435\u043b\u0430\u043d\u0438\u044f \u0438\u0437\u0443\u0447\u0435\u043d\u044b!', sm: '\u0412\u044b \u043f\u0440\u043e\u043b\u0438\u0441\u0442\u0430\u043b\u0438 \u0436\u0435\u043b\u0430\u043d\u0438\u044f.', hint: '\u0421\u0432\u0430\u0439\u043f\u043d\u0438\u0442\u0435 \u0432\u043b\u0435\u0432\u043e \u0438\u043b\u0438 \u0432\u043f\u0440\u0430\u0432\u043e' },
     ro: { title: 'Banca de dorinte', like: 'DA', nope: 'NU', counter: '{n} din {t}', st: 'Dorinte explorate!', sm: 'Ati explorat dorintele.', hint: 'Glisati stanga sau dreapta' }
   };
-  var wishes = [
-    { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.webp' },
-    { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.webp' },
-    { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.webp' },
-    { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.webp' },
-    { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.webp' }
-  ];
+  var wishesI18n = {
+    en: [
+      { title: 'Deep Conversation', desc: 'Share hopes and dreams with open-ended questions.', img: 'deep-conversation.webp' },
+      { title: 'Stargazing Night', desc: 'Find a dark spot, lie close, spot constellations.', img: 'stargazing-night.webp' },
+      { title: 'Sunrise Walk', desc: 'Wake early, walk quietly, share intentions.', img: 'sunrise-walk.webp' },
+      { title: 'Candlelit Dinner', desc: 'A cozy dinner at home with candles and wine.', img: 'candlelit-dinner.webp' },
+      { title: 'Sunset Watching', desc: 'Wrap in a blanket and watch the sunset together.', img: 'sunset-moment.webp' }
+    ],
+    ru: [
+      { title: '\u0413\u043b\u0443\u0431\u043e\u043a\u0430\u044f \u0431\u0435\u0441\u0435\u0434\u0430', desc: '\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u0435\u0441\u044c \u043c\u0435\u0447\u0442\u0430\u043c\u0438 \u0438 \u043d\u0430\u0434\u0435\u0436\u0434\u0430\u043c\u0438 \u0447\u0435\u0440\u0435\u0437 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u044b.', img: 'deep-conversation.webp' },
+      { title: '\u041d\u043e\u0447\u044c \u043f\u043e\u0434 \u0437\u0432\u0451\u0437\u0434\u0430\u043c\u0438', desc: '\u041d\u0430\u0439\u0434\u0438\u0442\u0435 \u0442\u0451\u043c\u043d\u043e\u0435 \u043c\u0435\u0441\u0442\u043e, \u043b\u044f\u0433\u0442\u0435 \u0440\u044f\u0434\u043e\u043c, \u0438\u0449\u0438\u0442\u0435 \u0441\u043e\u0437\u0432\u0435\u0437\u0434\u0438\u044f.', img: 'stargazing-night.webp' },
+      { title: '\u041f\u0440\u043e\u0433\u0443\u043b\u043a\u0430 \u043d\u0430 \u0440\u0430\u0441\u0441\u0432\u0435\u0442\u0435', desc: '\u0412\u0441\u0442\u0430\u043d\u044c\u0442\u0435 \u0440\u0430\u043d\u043e, \u0433\u0443\u043b\u044f\u0439\u0442\u0435 \u0432 \u0442\u0438\u0448\u0438\u043d\u0435, \u0434\u0435\u043b\u0438\u0442\u0435\u0441\u044c \u043f\u043b\u0430\u043d\u0430\u043c\u0438.', img: 'sunrise-walk.webp' },
+      { title: '\u0423\u0436\u0438\u043d \u043f\u0440\u0438 \u0441\u0432\u0435\u0447\u0430\u0445', desc: '\u0423\u044e\u0442\u043d\u044b\u0439 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0443\u0436\u0438\u043d \u0441\u043e \u0441\u0432\u0435\u0447\u0430\u043c\u0438 \u0438 \u0432\u0438\u043d\u043e\u043c.', img: 'candlelit-dinner.webp' },
+      { title: '\u0417\u0430\u043a\u0430\u0442 \u0432\u0434\u0432\u043e\u0451\u043c', desc: '\u0423\u043a\u0443\u0442\u0430\u0439\u0442\u0435\u0441\u044c \u0432 \u043f\u043b\u0435\u0434 \u0438 \u0441\u043c\u043e\u0442\u0440\u0438\u0442\u0435 \u043d\u0430 \u0437\u0430\u043a\u0430\u0442 \u0432\u043c\u0435\u0441\u0442\u0435.', img: 'sunset-moment.webp' }
+    ],
+    ro: [
+      { title: 'Conversatie profunda', desc: 'Impartasiti vise si sperante prin intrebari deschise.', img: 'deep-conversation.webp' },
+      { title: 'Noapte sub stele', desc: 'Gasiti un loc intunecat, intindeti-va aproape, cautati constelatii.', img: 'stargazing-night.webp' },
+      { title: 'Plimbare la rasarit', desc: 'Treziti-va devreme, plimbati-va in liniste, impartasiti intentii.', img: 'sunrise-walk.webp' },
+      { title: 'Cina la lumanari', desc: 'O cina de acasa cu lumanari si vin.', img: 'candlelit-dinner.webp' },
+      { title: 'Apus impreuna', desc: 'Inveliti-va intr-o patura si priviti apusul impreuna.', img: 'sunset-moment.webp' }
+    ]
+  };
 
   // Preload images for instant display
   function preloadImages() {
     var base = (window.location.pathname.indexOf('/ru') === 0 || window.location.pathname.indexOf('/ro') === 0) ? '../' : '';
-    wishes.forEach(function(w) { var img = new Image(); img.src = base + 'assets/images/' + w.img; });
+    wishesI18n.en.forEach(function(w) { var img = new Image(); img.src = base + 'assets/images/' + w.img; });
   }
   preloadImages();
 
@@ -24,7 +40,9 @@
   function loadCSS(f) { if (document.getElementById('demo-css-' + f)) return; var b = (window.location.pathname.indexOf('/ru') === 0 || window.location.pathname.indexOf('/ro') === 0) ? '../' : ''; var l = document.createElement('link'); l.id = 'demo-css-' + f; l.rel = 'stylesheet'; l.href = b + 'assets/demos/' + f; document.head.appendChild(l); }
 
   function open() {
-    var t = i18n[getLang()];
+    var lang = getLang();
+    var t = i18n[lang];
+    var wishes = wishesI18n[lang];
     var base = (window.location.pathname.indexOf('/ru') === 0 || window.location.pathname.indexOf('/ro') === 0) ? '../' : '';
     loadCSS('common.css'); loadCSS('swipe.css');
 
