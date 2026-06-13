@@ -22,10 +22,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://intimo.pro/ro/terms/"/>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://intimo.pro/delete-data</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://intimo.pro/delete-data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://intimo.pro/ru/delete-data/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://intimo.pro/ro/delete-data/"/>
+    <priority>0.8</priority>
+  </url>
   <url><loc>https://intimo.pro/ru/</loc><priority>0.9</priority></url>
   <url><loc>https://intimo.pro/ru/privacy/</loc><priority>0.7</priority></url>
   <url><loc>https://intimo.pro/ru/terms/</loc><priority>0.7</priority></url>
+  <url><loc>https://intimo.pro/ru/delete-data/</loc><priority>0.7</priority></url>
   <url><loc>https://intimo.pro/ro/</loc><priority>0.9</priority></url>
   <url><loc>https://intimo.pro/ro/privacy/</loc><priority>0.7</priority></url>
   <url><loc>https://intimo.pro/ro/terms/</loc><priority>0.7</priority></url>
+  <url><loc>https://intimo.pro/ro/delete-data/</loc><priority>0.7</priority></url>
 </urlset>
