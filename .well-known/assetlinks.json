@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.intimo.app",
+      "sha256_cert_fingerprints": [
+        "8F:52:77:2C:BF:4F:82:DC:CB:C6:95:A1:CA:95:44:27:48:7F:11:BC:A9:5C:AB:6A:BD:9E:35:EE:20:16:0E:EE"
+      ]
+    }
+  }
+]
